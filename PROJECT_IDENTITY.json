@@ -1,0 +1,33 @@
+{
+  "status": "active",
+  "project_name": "KAMUSORA",
+  "brand_replacement_exception": {
+    "status": "active",
+    "explicit_user_approval_required": true,
+    "approved_by": "user",
+    "approved_name": "KAMUSORA",
+    "approved_at": "2026-10-08",
+    "allowed_fields": [
+      "name",
+      "logo",
+      "favicon",
+      "branding_title"
+    ],
+    "forbidden_fields": [
+      "accent_color",
+      "typography",
+      "layout",
+      "spacing",
+      "component_styling",
+      "theme_mechanism",
+      "javascript_behavior",
+      "structure",
+      "governance",
+      "guards"
+    ]
+  },
+  "provenance": {
+    "derived_from": "Genesis Starter",
+    "active_identity_must_not_inherit_source_branding": true
+  }
+}

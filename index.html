@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061329">
+<meta name="description" content="KAMUSORA — Japanese dictionary and translator. Find the word. Find your Sora.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>KAMUSORA — Japanese Dictionary & Translator</title>
+<style>
+:root{--bg:#030916;--surface:#071a34;--surface-2:#0a2343;--ink:#eef8ff;--muted:#8fb0d2;--line:rgba(79,191,255,.26);--cyan:#19cfff;--blue:#4b8dff;--violet:#9b78ff;--pink:#d66cff;--white:#f7fbff;--shadow:0 24px 80px rgba(0,0,0,.42);--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--serif:Georgia,"Times New Roman",serif}
+:root[data-theme="light"]{--bg:#eaf3fb;--surface:#f5f9ff;--surface-2:#e0edf9;--ink:#12263d;--muted:#536f8d;--line:rgba(38,120,180,.28);--cyan:#087eac;--blue:#386be0;--violet:#7954c8;--pink:#b94ebc;--white:#f7fbff}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{margin:0;background:radial-gradient(circle at 50% 20%,#102f58 0,#06162d 34%,#020712 78%);color:var(--ink);font-family:var(--sans);line-height:1.55}button,input,textarea,select{font:inherit}button{cursor:pointer}::selection{background:var(--cyan);color:#03101e}
+.shell{width:100%;min-height:100vh;position:relative;overflow:clip;background:linear-gradient(180deg,rgba(3,11,27,.42),rgba(2,7,18,.88));box-shadow:var(--shadow)}:root[data-theme="light"] body{background:#eaf1f8}:root[data-theme="light"] .shell{background:var(--bg)}:root[data-theme="light"] .shell:before{background:linear-gradient(180deg,rgba(234,243,251,.22),rgba(220,234,247,.08))}:root[data-theme="light"] .shell:after{opacity:.025;filter:none}:root[data-theme="light"] .topbar{color:#12263d;border-bottom-color:rgba(38,120,180,.2)}:root[data-theme="light"] .topbar{background:rgba(238,247,255,.88)}:root[data-theme="light"] .nav button{color:#365878}:root[data-theme="light"] .nav button:hover,:root[data-theme="light"] .nav button.active{color:#12334e}:root[data-theme="light"] .hero-title{color:#12263d}:root[data-theme="light"] .quote-jp{color:#315b7f}:root[data-theme="light"] .quote-id{color:#587997}:root[data-theme="light"] .input-wrap,:root[data-theme="light"] .result{background:linear-gradient(145deg,#f4f9ff,#e6f1fb);color:#12263d}:root[data-theme="light"] .input-count{position:absolute;right:20px;bottom:12px;color:var(--muted);font-size:11px}.input-wrap{position:relative}.result-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.detected{border:1px solid var(--line);border-radius:999px;padding:5px 10px;color:var(--muted);font-size:11px}.input-wrap textarea{color:#12263d}:root[data-theme="light"] .input-wrap textarea::placeholder{color:#6e879e}:root[data-theme="light"] .result-label{color:#637e98}:root[data-theme="light"] .meaning{color:#536f8d}:root[data-theme="light"] .small-btn{background:#edf5fc;color:#254660}:root[data-theme="light"] .translator{background:linear-gradient(145deg,#d9e9f7,#cfe1f2);border-color:rgba(38,120,180,.38);box-shadow:0 18px 45px rgba(25,65,100,.12)}:root[data-theme="light"] .input-wrap{background:linear-gradient(145deg,#eaf3fb,#dceaf7);border-color:rgba(38,120,180,.3);color:#12263d}:root[data-theme="light"] .input-label{color:#536f8d}:root[data-theme="light"] .input-wrap textarea{color:#12263d}:root[data-theme="light"] .input-wrap textarea::placeholder{color:#7189a0}:root[data-theme="light"] .result{background:linear-gradient(145deg,#f5f9ff,#e3eef8);border-color:rgba(38,120,180,.22);color:#12263d}:root[data-theme="light"] .section{background:rgba(234,243,251,.7)}:root[data-theme="light"] .section-note,:root[data-theme="light"] .entry-meaning{color:#536f8d}:root[data-theme="light"] .search,:root[data-theme="light"] .filter,:root[data-theme="light"] .page-size{background:#f3f8fd;color:#254660;border-color:rgba(38,120,180,.25)}:root[data-theme="light"] .search input{color:#12263d}:root[data-theme="light"] .letter,:root[data-theme="light"] .page-btn{background:#e3eef8;color:#365878;border-color:rgba(38,120,180,.2)}:root[data-theme="light"] .letter.active,:root[data-theme="light"] .page-btn.active{background:#c5e8f7;color:#12334e}:root[data-theme="light"] .entry{border-bottom-color:rgba(38,120,180,.14)}:root[data-theme="light"] .entry-kana,:root[data-theme="light"] .entry-level,:root[data-theme="light"] .dict-stats{color:#637e98}:root[data-theme="light"] .footer{background:#d8e7f5;color:#536f8d}:root[data-theme="light"] .footer b{color:#12334e}:root[data-theme="light"] .secondary{background:#e2edf8;color:#254660;border-color:rgba(38,120,180,.28)}:root[data-theme="light"] .dir{background:#e4eff9;color:#365878}:root[data-theme="light"] .dir.active{background:#c6eaf8;color:#12334e}:root[data-theme="light"] .topbar{position:sticky;top:0;z-index:100;backdrop-filter:blur(16px)}
+.shell:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 34%,rgba(31,166,255,.16),transparent 33%),radial-gradient(circle at 78% 52%,rgba(145,88,255,.12),transparent 27%),linear-gradient(90deg,rgba(1,8,22,.9),transparent 35%,transparent 65%,rgba(1,8,22,.86))}
+.shell:after{content:"";position:absolute;z-index:0;inset:76px 0 0;background:linear-gradient(90deg,rgba(2,7,18,.84) 0%,rgba(2,10,25,.48) 46%,rgba(2,7,18,.28) 100%),linear-gradient(180deg,rgba(2,7,18,.10) 0%,rgba(2,7,18,.22) 38%,rgba(2,7,18,.76) 76%,#020712 100%),url("sora-bg.png") center top/100% auto no-repeat;background-color:#020712;opacity:1;pointer-events:none;filter:saturate(1.08)}
+.topbar,.hero,.feature-strip,.translator,.section,.footer{position:relative;z-index:1}
+.topbar{position:sticky;top:0;z-index:100;height:86px;display:flex;align-items:center;padding:0 clamp(22px,4vw,64px);gap:26px;border-bottom:1px solid rgba(77,185,255,.13);background:linear-gradient(180deg,rgba(2,10,24,.72),rgba(2,10,24,.22));backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-width:max-content}.brand-mark{width:42px;height:42px;display:grid;place-items:center;color:#22d3ff;background:linear-gradient(135deg,rgba(0,210,255,.18),rgba(40,104,255,.08));font-size:35px;font-weight:950;font-family:Arial,Helvetica,sans-serif;line-height:1;letter-spacing:-.12em;text-shadow:0 0 10px rgba(34,211,255,.55),0 0 25px rgba(40,104,255,.38);transform:skew(-7deg);}.brand-name{font-weight:900;letter-spacing:.17em;font-size:18px}.brand-sub{display:block;font-size:10px;color:#8db3d8;letter-spacing:.02em;margin-top:-2px}
+.nav{display:flex;gap:3px;margin-left:26px}.nav button{border:0;background:transparent;color:#9db6d3;padding:11px 14px;border-radius:999px;font-size:12px;font-weight:800;display:flex;align-items:center;gap:8px}.nav button:hover,.nav button.active{color:#f3fbff;background:rgba(32,172,255,.09);box-shadow:inset 0 -2px 0 var(--cyan)}.tools{margin-left:auto;display:flex;align-items:center;gap:8px}.version{border:1px solid rgba(117,176,230,.24);background:rgba(6,25,48,.65);padding:7px 13px;border-radius:999px;color:#c9ddf2;font-size:11px;font-weight:800}.icon-btn{width:40px;height:40px;border:1px solid rgba(93,188,255,.28);border-radius:50%;background:rgba(8,30,55,.72);color:#d8f5ff}.icon-btn:hover{border-color:var(--cyan);box-shadow:0 0 20px rgba(25,207,255,.16)}
+.hero{min-height:390px;padding:38px clamp(22px,4.5vw,72px) 26px;display:grid;grid-template-columns:minmax(0,860px);justify-content:center;align-items:start}
+.hero-center{text-align:center;align-self:start;padding-top:58px;width:100%}.quote-jp{font-size:clamp(22px,2.3vw,34px);letter-spacing:.12em;color:#b9d9f8;text-shadow:0 0 18px rgba(59,175,255,.14)}.quote-id{margin:7px 0 34px;color:#84a9d0;font-size:15px}.hero-title{font-family:var(--serif);font-size:clamp(38px,5vw,72px);line-height:.98;margin:0 0 22px;letter-spacing:-.04em}.hero-title span{color:#49d9ff;text-shadow:0 0 26px rgba(25,207,255,.23)}
+.hero-search{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid rgba(40,211,255,.9);background:rgba(5,22,43,.86);box-shadow:0 0 0 1px rgba(76,123,255,.15),0 0 32px rgba(17,181,255,.14);border-radius:28px;padding:8px 9px 8px 19px}.hero-search .search-icon{font-size:22px;color:#c8eaff}.hero-search input{width:100%;border:0;outline:0;background:transparent;color:#eaf8ff;font-size:16px;min-width:0}.hero-search input::placeholder{color:#7395ba}.hero-search button{width:43px;height:43px;border:0;border-radius:50%;background:linear-gradient(135deg,#0ca9e8,#5d83ff);color:#fff;font-size:20px;box-shadow:0 0 22px rgba(45,176,255,.22)}.mode-chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}.mode-chip{border:1px solid rgba(104,171,225,.27);background:rgba(9,31,57,.62);color:#a8c5e4;border-radius:999px;padding:7px 13px;font-size:11px}.mode-chip.active{border-color:rgba(48,212,255,.72);color:#e5fbff;background:rgba(17,132,190,.16)}
+.info-card{border:1px solid rgba(37,190,255,.66);background:linear-gradient(145deg,rgba(7,30,58,.92),rgba(5,18,39,.8));box-shadow:0 18px 50px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.035);border-radius:20px;padding:22px;min-height:206px}.info-card:hover{transform:translateY(-2px);border-color:#4edcff;box-shadow:0 18px 50px rgba(0,0,0,.3),0 0 30px rgba(30,183,255,.09)}.card-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(50,209,255,.3);background:rgba(22,154,221,.13);color:#d9f7ff;font-size:24px;margin-bottom:13px}.info-card h2{font-size:18px;margin:0 0 2px}.info-card p{font-size:12px;color:#8fb1d4;margin:0 0 15px}.card-link{display:flex;align-items:center;justify-content:space-between;color:#dff7ff;text-decoration:none;font-size:12px;font-weight:800}.card-link .arrow{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(37,151,224,.16);color:#a9edff;font-size:20px}.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(100,173,222,.16);margin-top:16px;padding-top:13px;gap:8px}.stats b{display:block;font-size:13px;color:#e4f6ff}.stats span{font-size:9px;color:#6f96bf}.translator-card{grid-column:1}.translator-card .card-link{margin-top:10px}.quick-card{grid-column:3}.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:13px}.quick-item{border:1px solid rgba(97,168,225,.16);background:rgba(12,41,72,.48);border-radius:11px;padding:10px 8px;color:#9ec0df;font-size:10px;text-align:center}.quick-item b{display:block;color:#d9f5ff;font-size:18px;margin-bottom:2px}
+.feature-strip{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 clamp(22px,4.5vw,72px) 48px}.feature-card{border:1px solid rgba(42,186,255,.54);border-radius:20px;background:linear-gradient(145deg,rgba(7,29,55,.91),rgba(5,16,34,.83));padding:19px 22px;display:flex;align-items:center;gap:15px}.feature-card .feature-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(29,151,222,.15);border:1px solid rgba(50,203,255,.3);font-size:21px}.feature-card h3{margin:0;font-size:16px}.feature-card p{margin:3px 0 0;color:#7f9fc2;font-size:11px}.feature-card .arrow{margin-left:auto;color:#a7ebff;font-size:23px}
+.translator{margin:0 clamp(22px,7vw,112px) 40px;border:1px solid rgba(40,199,255,.52);border-radius:26px;background:linear-gradient(145deg,rgba(5,22,43,.96),rgba(4,13,28,.95));box-shadow:0 25px 70px rgba(0,0,0,.32);padding:26px}.section{padding:58px clamp(22px,7vw,112px);background:linear-gradient(180deg,rgba(3,11,25,.15),rgba(3,10,22,.65))}.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:22px}.section-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:#43d6ff;font-weight:900}.section-title{font-size:34px;line-height:1;margin:7px 0 0}.section-note{max-width:540px;color:#7f9fc2;margin:0;font-size:13px}.dictionary{border-top:1px solid rgba(68,190,255,.38)}
+.direction{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:15px}.dir{border:1px solid rgba(95,166,222,.23);background:rgba(8,29,52,.8);color:#a5c0db;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800}.dir.active{background:rgba(35,178,231,.16);border-color:rgba(46,211,255,.7);color:#e8fbff}.swap{margin-left:auto;border:1px solid rgba(95,166,222,.24);background:rgba(8,29,52,.8);color:#c7edff;border-radius:999px;padding:9px 14px}.input-wrap{background:linear-gradient(145deg,rgba(10,34,61,.96),rgba(5,20,39,.98));border:1px solid rgba(87,174,226,.3);color:#e8f5ff;border-radius:18px;padding:17px 19px;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}.input-label{display:flex;justify-content:space-between;gap:12px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:#7fa6c9;margin-bottom:7px}.input-wrap textarea{width:100%;min-height:92px;border:0;resize:vertical;outline:0;font-size:18px;background:transparent;color:#eaf7ff;caret-color:var(--cyan)}.input-wrap textarea::placeholder{color:#6687a8}.input-wrap:focus-within{border-color:rgba(25,207,255,.72);box-shadow:0 0 0 2px rgba(25,207,255,.07)}.actions{display:flex;gap:9px;margin-top:10px}.primary{flex:1;border:0;border-radius:14px;background:linear-gradient(135deg,#0aaee8,#4b83ff);color:#fff;padding:13px;font-weight:900;letter-spacing:.08em;box-shadow:0 0 24px rgba(22,168,239,.18)}.secondary{border:1px solid rgba(99,163,215,.3);border-radius:14px;background:rgba(9,31,55,.88);color:#d9f3ff;padding:13px 18px}.result{margin-top:12px;background:linear-gradient(145deg,rgba(13,39,67,.97),rgba(7,24,44,.98));border:1px solid rgba(87,174,226,.25);color:#e8f5ff;border-radius:18px;padding:20px;display:grid;grid-template-columns:1fr auto;gap:16px}.result-main{min-width:0}.result-label{font-size:9px;font-weight:900;letter-spacing:.14em;color:#7fa6c9;text-transform:uppercase}.jp{font-family:var(--serif);font-weight:800;font-size:clamp(30px,4vw,54px);line-height:1.15;margin:4px 0}.romaji{font-size:clamp(21px,3vw,31px);font-weight:900;color:#49d9ff}.meaning{margin-top:6px;color:#a6c1dc}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.pill{border:1px solid rgba(113,177,220,.28);border-radius:999px;padding:4px 8px;font-size:9px;font-weight:800;color:#a8c9e6}.result-actions{display:flex;flex-direction:column;gap:7px}.small-btn{border:1px solid rgba(113,177,220,.32);background:rgba(10,34,61,.96);border-radius:10px;padding:8px 10px;font-size:10px;font-weight:800;color:#d9f3ff}.notice{margin-top:9px;color:#718eae;font-size:11px}
+.dict-toolbar{display:grid;grid-template-columns:1fr auto auto;gap:9px;padding:13px 0;border-bottom:1px solid rgba(91,174,224,.16)}.search{min-height:46px;border:1px solid rgba(85,171,224,.24);background:rgba(7,27,50,.72);border-radius:12px;display:flex;align-items:center;padding:0 13px}.search span{color:#4ddcff;font-weight:900;margin-right:8px}.search input{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font-size:13px}.filter{border:1px solid rgba(85,171,224,.24);border-radius:12px;background:rgba(7,27,50,.72);color:#c5ddf2;padding:0 12px}.alphabet{display:flex;gap:5px;flex-wrap:wrap;padding:14px 0}.letter{min-width:29px;height:29px;border:1px solid rgba(91,174,224,.2);border-radius:7px;background:rgba(7,27,50,.5);color:#7898b9;font-weight:900;font-size:10px}.letter.active,.letter:hover{background:rgba(35,178,231,.15);color:#e5fbff;border-color:#3fd9ff}.dict-stats{font-size:11px;color:#7899ba;padding:0 0 15px}.entries{border-top:1px solid rgba(91,174,224,.15)}.pagination{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;padding:22px 0 4px}.page-btn{min-width:38px;height:36px;border:1px solid rgba(91,174,224,.2);border-radius:9px;background:rgba(7,27,50,.58);color:#8eacc9;font-size:11px;font-weight:900}.page-btn:hover,.page-btn.active{background:rgba(35,178,231,.15);color:#e8fbff;border-color:#3fd9ff}.page-btn:disabled{opacity:.35;cursor:not-allowed}.page-ellipsis{color:#6887a8;font-weight:900;padding:0 4px}.page-size{margin-left:8px;border:1px solid rgba(85,171,224,.24);border-radius:9px;background:rgba(7,27,50,.72);color:#c5ddf2;padding:9px 10px;font-size:10px}.pagination-note{width:100%;text-align:center;color:#6887a8;font-size:10px;margin-top:2px}.entry{display:grid;grid-template-columns:200px 170px minmax(0,1fr) 100px;gap:16px;padding:17px 0;border-bottom:1px solid rgba(91,174,224,.13);align-items:center}.entry:hover{background:rgba(28,142,211,.06)}.entry-romaji{font-size:18px;font-weight:900;color:#4ddcff}.entry-jp{font-family:var(--serif);font-size:25px;font-weight:800}.entry-kana{font-size:12px;color:#7698b9}.entry-meaning{font-size:13px;color:#c7d9eb}.entry-level{text-align:right;font-size:9px;font-weight:900;letter-spacing:.08em;color:#7698b9}.empty{padding:50px 0;color:#7898b9;text-align:center}.footer{border-top:1px solid rgba(82,171,224,.14);padding:27px clamp(22px,4.5vw,72px);display:flex;justify-content:space-between;gap:20px;color:#6989ab;font-size:10px;background:rgba(1,8,20,.58)}.footer b{color:#c9eaff}
+#tests,#dictionary,#translator,#settings{scroll-margin-top:calc(var(--topbar-offset, 112px) + 12px)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+:root[data-theme="light"] .topbar{background:rgba(245,249,255,.96);border-bottom-color:var(--line);box-shadow:0 5px 22px rgba(29,70,110,.07)}
+:root[data-theme="light"] .brand-sub{color:var(--muted)}
+:root[data-theme="light"] .version,:root[data-theme="light"] .icon-btn{background:var(--surface);color:var(--ink);border-color:var(--line)}
+:root[data-theme="light"] .hero-search{background:var(--surface);border-color:var(--line);box-shadow:0 8px 28px rgba(28,85,130,.08)}
+:root[data-theme="light"] .hero-search .search-icon,:root[data-theme="light"] .hero-search input{color:var(--ink)}
+:root[data-theme="light"] .hero-search input::placeholder{color:var(--muted)}
+:root[data-theme="light"] .mode-chip{background:var(--surface);color:var(--muted);border-color:var(--line)}
+:root[data-theme="light"] .mode-chip.active{background:#d7edf8;color:#12334e;border-color:var(--cyan)}
+:root[data-theme="light"] .info-card,:root[data-theme="light"] .feature-card{background:var(--surface);color:var(--ink);border-color:var(--line);box-shadow:0 12px 32px rgba(25,65,100,.08)}
+:root[data-theme="light"] .info-card p,:root[data-theme="light"] .feature-card p{color:var(--muted)}
+:root[data-theme="light"] .card-link,:root[data-theme="light"] .feature-card .arrow{color:#225575}
+:root[data-theme="light"] .card-link .arrow,:root[data-theme="light"] .card-icon,:root[data-theme="light"] .feature-card .feature-icon{background:#e2f1fa;color:#245b7d;border-color:var(--line)}
+:root[data-theme="light"] .quick-item{background:#edf5fc;color:#365878;border-color:var(--line)}
+:root[data-theme="light"] .quick-item b,:root[data-theme="light"] .stats b{color:#12334e}
+:root[data-theme="light"] .stats span{color:var(--muted)}
+:root[data-theme="light"] .translator{background:var(--surface);border-color:var(--line);box-shadow:0 14px 36px rgba(25,65,100,.09)}
+:root[data-theme="light"] .section{background:var(--bg)}
+:root[data-theme="light"] .section-kicker{color:#087eac}
+:root[data-theme="light"] .dictionary{border-top-color:var(--line)}
+:root[data-theme="light"] .dir,:root[data-theme="light"] .swap{background:var(--surface-2);color:#365878;border-color:var(--line)}
+:root[data-theme="light"] .dir.active{background:#d7edf8;color:#12334e;border-color:var(--cyan)}
+:root[data-theme="light"] .input-wrap{background:#edf4fb;border-color:var(--line);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+:root[data-theme="light"] .input-wrap textarea{color:var(--ink)}
+:root[data-theme="light"] .input-wrap textarea::placeholder{color:#71869b}
+:root[data-theme="light"] .input-label,:root[data-theme="light"] .result-label{color:#58748e}
+:root[data-theme="light"] .result{background:#f1f6fc;border-color:var(--line);color:var(--ink)}
+:root[data-theme="light"] .jp{color:#12263d}
+:root[data-theme="light"] .romaji{color:#087eac}
+:root[data-theme="light"] .meaning,:root[data-theme="light"] .notice{color:var(--muted)}
+:root[data-theme="light"] .pill{background:#e6f0f9;color:#365878;border-color:var(--line)}
+:root[data-theme="light"] .search{background:var(--surface);border-color:var(--line)}
+:root[data-theme="light"] .search span,:root[data-theme="light"] .entry-romaji{color:#087eac}
+:root[data-theme="light"] .search input{color:var(--ink)}
+:root[data-theme="light"] .search input::placeholder{color:var(--muted)}
+:root[data-theme="light"] .filter,:root[data-theme="light"] .page-size{background:var(--surface);color:var(--ink);border-color:var(--line)}
+:root[data-theme="light"] .letter,:root[data-theme="light"] .page-btn{background:var(--surface-2);color:#365878;border-color:var(--line)}
+:root[data-theme="light"] .letter.active,:root[data-theme="light"] .letter:hover,:root[data-theme="light"] .page-btn.active,:root[data-theme="light"] .page-btn:hover{background:#d7edf8;color:#12334e;border-color:var(--cyan)}
+:root[data-theme="light"] .dict-stats,:root[data-theme="light"] .entry-kana,:root[data-theme="light"] .entry-level,:root[data-theme="light"] .page-ellipsis,:root[data-theme="light"] .pagination-note{color:var(--muted)}
+:root[data-theme="light"] .entries,:root[data-theme="light"] .entry,:root[data-theme="light"] .dict-toolbar{border-color:var(--line)}
+:root[data-theme="light"] .entry:hover{background:rgba(8,126,172,.055)}
+:root[data-theme="light"] .footer{background:#dce8f4;color:#536f8d;border-color:var(--line)}
+:root[data-theme="light"] .footer b{color:#12334e}
+:root[data-theme="light"] .topbar .nav button{color:#365878}
+:root[data-theme="light"] .topbar .nav button:hover,:root[data-theme="light"] .topbar .nav button.active{color:#12334e;background:#e4f1fa}
+:root[data-theme="light"] .topbar .nav button.active{box-shadow:inset 0 -2px 0 var(--cyan)}
+
+@media(max-width:1050px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:35px}.hero-center{order:1;padding-top:28px}.nav{margin-left:4px}.brand-sub{display:none}}
+@media(max-width:700px){.topbar{height:auto;min-height:72px;flex-wrap:wrap;padding:13px 17px;gap:10px}.nav{order:3;width:100%;margin:0;overflow:auto}.nav button{white-space:nowrap;padding:9px 11px}.version{display:none}.hero{padding:25px 17px 22px}.hero-center{padding-top:8px}.quote-jp{font-size:19px}.quote-id{font-size:12px;margin-bottom:25px}.hero-search{border-radius:22px;padding-left:14px}.hero-search input{font-size:14px}.translator{margin:0 17px 28px;padding:18px;border-radius:21px}.direction{gap:6px}.dir{font-size:10px}.swap{margin-left:0}.result{grid-template-columns:1fr}.result-actions{flex-direction:row}.section{padding:42px 17px}.section-head{display:block}.section-note{margin-top:12px}.dict-toolbar{grid-template-columns:1fr}.entry{grid-template-columns:1fr 1fr;gap:6px 13px}.entry-meaning{grid-column:1/-1}.entry-level{text-align:left}.pagination{gap:5px}.page-btn{min-width:34px;height:34px;padding:0 9px}.page-btn.page-num{min-width:34px}.pagination .page-ellipsis{padding:0 2px}.footer{padding:24px 17px;flex-direction:column}.shell:after{width:100%;height:100%;bottom:0}}
+
+
+.related-results{margin-top:20px;padding-top:16px;border-top:1px solid rgba(87,174,226,.22)}.related-heading{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}.related-title{font-size:13px;font-weight:800;color:var(--ink)}.related-count{font-size:11px;color:var(--muted)}.related-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.related-card{min-width:0;border:1px solid var(--line);border-radius:13px;padding:13px;background:rgba(7,27,50,.38)}.related-jp{font-size:22px;font-weight:800;line-height:1.35;overflow-wrap:anywhere}.related-romaji{margin-top:3px;color:var(--cyan);font-weight:750;overflow-wrap:anywhere}.related-meaning{margin-top:5px;color:var(--muted);font-size:12px}.related-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}.related-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.related-copy{border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:var(--surface-2);color:var(--ink);font-size:10px}.related-copy:hover{border-color:var(--cyan)}.related-results[hidden]{display:none!important}:root[data-theme="light"] .related-card{background:rgba(255,255,255,.7)}@media(max-width:700px){.related-list{grid-template-columns:1fr}.related-card{padding:12px}.related-jp{font-size:21px}}
+.result[hidden],.suggestions[hidden]{display:none!important}.result{scroll-margin-top:calc(var(--topbar-offset,112px) + 12px)}.suggestions{margin-top:16px;padding-top:13px;border-top:1px solid rgba(87,174,226,.22)}.suggestions-title{font-size:12px;color:var(--muted);margin-bottom:9px}.suggestion-list{display:flex;flex-wrap:wrap;gap:8px}.suggestion-btn{border:1px solid rgba(40,199,255,.42);border-radius:999px;padding:8px 12px;background:rgba(17,91,133,.2);color:var(--ink);font:inherit;font-size:12px}.suggestion-btn:hover,.suggestion-btn:focus-visible{border-color:var(--cyan);outline:2px solid rgba(40,199,255,.2)}:root[data-theme="light"] .suggestion-btn{background:#e3eef8;color:#254660;border-color:rgba(38,120,180,.3)}
+
+.correction-status{margin:10px 0 0;padding:11px 13px;border:1px solid rgba(37,190,255,.35);border-radius:12px;background:rgba(7,30,58,.55);color:var(--text,#e8f6ff);font-size:13px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.correction-status[hidden]{display:none}.correction-status button{border:1px solid rgba(37,190,255,.45);background:rgba(37,151,224,.12);color:inherit;border-radius:8px;padding:7px 10px;font:inherit;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar" id="topbar">
+  <a class="brand" href="#top" aria-label="KAMUSORA home"><span class="brand-mark" aria-hidden="true">K</span><span><span class="brand-name">KAMUSORA</span><span class="brand-sub">Japanese Dictionary & Translator</span></span></a>
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-scroll="top">⌂ <span>Home</span></button>
+    <button data-scroll="dictionary">▤ <span>Dictionary</span></button>
+    <button data-scroll="translator">⇄ <span>Translator</span></button>
+    <button data-scroll="tests">☑ <span>Tests</span></button>
+    <button data-scroll="settings">⚙ <span>Settings</span></button>
+  </nav>
+  <div class="tools"><span class="version">v0.3.6</span><button class="icon-btn" id="theme" type="button" aria-label="Toggle theme">☾</button></div>
+</header>
+<main id="top">
+<section class="hero" aria-label="KAMUSORA home">
+  <div class="hero-center">
+    <div class="quote-jp">言葉は、また君をつなぐ</div><div class="quote-id">“Kata-kata akan selalu menghubungkan kita.”</div>
+    <h1 class="hero-title">Find the word.<br><span>Find your Sora.</span></h1>
+  </div>
+</section>
+<section class="translator" id="translator" aria-label="Translator">
+  <div class="input-wrap"><div class="input-label"><span>Input</span><span>Auto-detect · offline</span></div><textarea id="query" maxlength="500" placeholder="Contoh: good night, selamat makan, arigatou…" aria-label="Teks yang ingin diterjemahkan"></textarea><div class="input-count" id="inputCount" aria-live="polite">0/500</div></div>
+  <div class="actions"><button class="primary" id="translate" type="button">TRANSLATE</button><button class="secondary" id="clear" type="button">CLEAR</button></div>
+  <div class="correction-status" id="correctionStatus" hidden aria-live="polite"></div>
+  <div class="result" id="result" tabindex="-1" hidden><div class="result-main"><div class="result-heading"><div class="result-label">Result</div><div class="detected" id="detectedLanguage">Belum ada input</div></div><div class="jp" id="resultJP">—</div><div class="romaji" id="resultRomaji">—</div><div class="meaning" id="resultMeaning">Ketik sesuatu untuk mencari.</div><div class="meta" id="resultMeta"></div><div class="related-results" id="relatedResults" hidden aria-live="polite"></div><div class="suggestions" id="suggestions" hidden></div></div><div class="result-actions"><button class="small-btn" id="copy" type="button">Copy</button><button class="small-btn" id="speak" type="button">Speak</button></div></div>
+  <div class="notice" id="notice">Local dictionary mode: hasil berasal dari dataset bawaan project, tanpa API.</div>
+</section>
+<section class="section" id="dictionary">
+  <div class="section-head"><div><div class="section-kicker">The big book</div><h2 class="section-title">Romaji Dictionary</h2></div><p class="section-note">Indeks Romaji yang bisa dibrowse seperti buku besar. Cari berdasarkan Romaji, Japanese, Kana, English, atau Indonesia.</p></div>
+  <div class="dictionary">
+    <div class="dict-toolbar"><label class="search"><span>⌕</span><input id="dictSearch" placeholder="Cari: eiga, 映画, えいが, film..." autocomplete="off"></label><select class="filter" id="levelFilter"><option value="all">All levels</option><option>N5</option><option>N4</option><option>N3</option><option>N2</option></select><select class="filter" id="typeFilter"><option value="all">All types</option><option>noun</option><option>verb</option><option>adjective</option><option>expression</option><option>adverb</option></select></div>
+    <div class="alphabet" id="alphabet"></div><div class="dict-stats"><b id="dictCount">0</b> entries · <span id="dictFilterLabel">All entries</span></div><div class="entries" id="entries"></div><div class="empty" id="empty" hidden>Tidak ada kata yang cocok.</div><div class="pagination" id="pagination" aria-label="Dictionary pages"></div>
+  </div>
+</section>
+<section class="feature-strip" id="tests" aria-label="Practice and tests">
+  <article class="feature-card"><div class="feature-icon">▤</div><div><h3>Practice & Tests</h3><p>Ruang latihan untuk menguji pemahaman kata, romaji, dan JLPT.</p></div><span class="arrow">→</span></article>
+  <article class="feature-card"><div class="feature-icon">☼</div><div><h3>Japanese Dictionary</h3><p>Romaji-first index dengan Japanese, Kana, English, Indonesia, JLPT, dan tipe kata.</p></div><a class="arrow" href="#dictionary">→</a></article>
+</section>
+<section class="section" id="settings"><div class="section-head"><div><div class="section-kicker">Settings</div><h2 class="section-title">Local by design.</h2></div><p class="section-note">KAMUSORA berjalan sebagai standalone HTML. Theme preference disimpan lokal di browser; data pencarian tidak dikirim ke server.</p></div></section>
+</main>
+<footer class="footer"><div><b>KAMUSORA</b><br>Japanese ↔ Romaji, with English & Indonesian meaning.</div><div>Local · Standalone HTML · Mobile friendly · v0.3.6</div></footer>
+<script>
+(() => {
+'use strict';
+const words = [
+['aoi','青い','あおい','blue','biru','adjective','N5'],['akai','赤い','あかい','red','merah','adjective','N5'],['ame','雨','あめ','rain','hujan','noun','N5'],['asa','朝','あさ','morning','pagi','noun','N5'],['ashita','明日','あした','tomorrow','besok','noun','N5'],['atsui','暑い','あつい','hot weather','panas','adjective','N5'],['benkyou','勉強','べんきょう','study','belajar','noun','N5'],['chikatetsu','地下鉄','ちかてつ','subway','kereta bawah tanah','noun','N4'],['chotto','ちょっと','ちょっと','a little','sedikit','adverb','N5'],['daigaku','大学','だいがく','university','universitas','noun','N5'],['densha','電車','でんしゃ','train','kereta','noun','N5'],['denki','電気','でんき','electricity','listrik','noun','N4'],['eiga','映画','えいが','movie','film','noun','N5'],['eki','駅','えき','station','stasiun','noun','N5'],['enpitsu','鉛筆','えんぴつ','pencil','pensil','noun','N5'],['fuyu','冬','ふゆ','winter','musim dingin','noun','N5'],['gakkou','学校','がっこう','school','sekolah','noun','N5'],['genki','元気','げんき','healthy / fine','sehat / baik','adjective','N5'],['getsuyoubi','月曜日','げつようび','Monday','Senin','noun','N5'],['gohan','ご飯','ごはん','meal / rice','makanan / nasi','noun','N5'],['hai','はい','はい','yes','ya','expression','N5'],['hana','花','はな','flower','bunga','noun','N5'],['haru','春','はる','spring','musim semi','noun','N5'],['hayai','早い','はやい','early / fast','awal / cepat','adjective','N5'],['heya','部屋','へや','room','kamar','noun','N5'],['hikari','光','ひかり','light','cahaya','noun','N4'],['hito','人','ひと','person','orang','noun','N5'],['hon','本','ほん','book','buku','noun','N5'],['hoshi','星','ほし','star','bintang','noun','N5'],['ichi','一','いち','one','satu','noun','N5'],['ie','家','いえ','house / home','rumah','noun','N5'],['ii','いい','いい','good','bagus','adjective','N5'],['ima','今','いま','now','sekarang','noun','N5'],['inu','犬','いぬ','dog','anjing','noun','N5'],['iro','色','いろ','color','warna','noun','N5'],['itsumo','いつも','いつも','always','selalu','adverb','N5'],['jikan','時間','じかん','time','waktu','noun','N5'],['jinsei','人生','じんせい','life','kehidupan','noun','N4'],['jisho','辞書','じしょ','dictionary','kamus','noun','N5'],['kagi','鍵','かぎ','key','kunci','noun','N5'],['kamera','カメラ','カメラ','camera','kamera','noun','N5'],['kanji','漢字','かんじ','kanji','kanji','noun','N5'],['kasa','傘','かさ','umbrella','payung','noun','N5'],['kawaii','可愛い','かわいい','cute','imut','adjective','N5'],['kaze','風','かぜ','wind','angin','noun','N5'],['ki','木','き','tree','pohon','noun','N5'],['kinoo','昨日','きのう','yesterday','kemarin','noun','N5'],['kirei','綺麗','きれい','beautiful / clean','indah / bersih','adjective','N5'],['kita','北','きた','north','utara','noun','N5'],['koe','声','こえ','voice','suara','noun','N4'],['koko','ここ','ここ','here','di sini','adverb','N5'],['kore','これ','これ','this','ini','noun','N5'],['kuruma','車','くるま','car','mobil','noun','N5'],['kutsu','靴','くつ','shoes','sepatu','noun','N5'],['kyou','今日','きょう','today','hari ini','noun','N5'],['machi','町','まち','town','kota kecil','noun','N5'],['mado','窓','まど','window','jendela','noun','N5'],['maiasa','毎朝','まいあさ','every morning','setiap pagi','adverb','N4'],['mainichi','毎日','まいにち','every day','setiap hari','adverb','N5'],['manga','漫画','まんが','manga','manga','noun','N5'],['mizu','水','みず','water','air','noun','N5'],['mondai','問題','もんだい','problem / question','masalah / pertanyaan','noun','N4'],['natsu','夏','なつ','summer','musim panas','noun','N5'],['neko','猫','ねこ','cat','kucing','noun','N5'],['nihon','日本','にほん','Japan','Jepang','noun','N5'],['nihongo','日本語','にほんご','Japanese language','bahasa Jepang','noun','N5'],['nani','何','なに','what','apa','noun','N5'],['natsu','夏','なつ','summer','musim panas','noun','N5'],['otoko','男','おとこ','man','pria','noun','N5'],['onna','女','おんな','woman','wanita','noun','N5'],['ocha','お茶','おちゃ','tea','teh','noun','N5'],['omoi','重い','おもい','heavy','berat','adjective','N5'],['omoshiroi','面白い','おもしろい','interesting','menarik','adjective','N5'],['ongaku','音楽','おんがく','music','musik','noun','N5'],['pan','パン','パン','bread','roti','noun','N5'],['purezento','プレゼント','プレゼント','present / gift','hadiah','noun','N5'],['ryouri','料理','りょうり','cooking / cuisine','masakan','noun','N4'],['samui','寒い','さむい','cold weather','dingin','adjective','N5'],['sakura','桜','さくら','cherry blossom','bunga sakura','noun','N5'],['sensei','先生','せんせい','teacher','guru','noun','N5'],['seoul','ソウル','ソウル','Seoul','Seoul','noun','N5'],['shashin','写真','しゃしん','photo','foto','noun','N5'],['shigoto','仕事','しごと','work / job','pekerjaan','noun','N5'],['shinkansen','新幹線','しんかんせん','bullet train','kereta cepat','noun','N4'],['shiroi','白い','しろい','white','putih','adjective','N5'],['shuumatsu','週末','しゅうまつ','weekend','akhir pekan','noun','N4'],['sora','空','そら','sky','langit','noun','N5'],['suki','好き','すき','like','suka','adjective','N5'],['tabemono','食べ物','たべもの','food','makanan','noun','N5'],['taberu','食べる','たべる','to eat','makan','verb','N5'],['tanoshii','楽しい','たのしい','fun','menyenangkan','adjective','N5'],['tanjoubi','誕生日','たんじょうび','birthday','ulang tahun','noun','N5'],['tegami','手紙','てがみ','letter','surat','noun','N5'],['tenki','天気','てんき','weather','cuaca','noun','N5'],['terebi','テレビ','テレビ','television','televisi','noun','N5'],['tomodachi','友達','ともだち','friend','teman','noun','N5'],['toshokan','図書館','としょかん','library','perpustakaan','noun','N5'],['tokyo','東京','とうきょう','Tokyo','Tokyo','noun','N5'],['umi','海','うみ','sea','laut','noun','N5'],['ureshii','嬉しい','うれしい','happy','senang','adjective','N5'],['uta','歌','うた','song','lagu','noun','N5'],['yasui','安い','やすい','cheap','murah','adjective','N5'],['yasumi','休み','やすみ','rest / holiday','istirahat / libur','noun','N5'],['yoi','良い','よい','good','baik','adjective','N5'],['yuki','雪','ゆき','snow','salju','noun','N5'],['yume','夢','ゆめ','dream','mimpi','noun','N4'],['yurui','緩い','ゆるい','loose / lenient','longgar','adjective','N3'],['zasshi','雑誌','ざっし','magazine','majalah','noun','N5'],
+['aisatsu','挨拶','あいさつ','greeting','sapaan','noun','N5'],['atarashii','新しい','あたらしい','new','baru','adjective','N5'],['asagohan','朝ご飯','あさごはん','breakfast','sarapan','noun','N5'],['bangohan','晩ご飯','ばんごはん','dinner','makan malam','noun','N5'],['benri','便利','べんり','convenient','praktis','adjective','N5'],['byouin','病院','びょういん','hospital','rumah sakit','noun','N5'],['chichi','父','ちち','my father','ayah saya','noun','N5'],['chiisai','小さい','ちいさい','small','kecil','adjective','N5'],['daijoubu','大丈夫','だいじょうぶ','okay / all right','tidak apa-apa','adjective','N5'],['haha','母','はは','my mother','ibu saya','noun','N5'],['hirugohan','昼ご飯','ひるごはん','lunch','makan siang','noun','N5'],['hiru','昼','ひる','noon / daytime','siang','noun','N5'],['isogashii','忙しい','いそがしい','busy','sibuk','adjective','N5'],['kaisha','会社','かいしゃ','company','perusahaan','noun','N5'],['kazoku','家族','かぞく','family','keluarga','noun','N5'],['kodomo','子供','こども','child','anak','noun','N5'],['matsuri','祭り','まつり','festival','festival','noun','N3'],['miru','見る','みる','to see / watch','melihat / menonton','verb','N5'],['nomu','飲む','のむ','to drink','minum','verb','N5'],['ookii','大きい','おおきい','big','besar','adjective','N5'],['sumimasen','すみません','すみません','excuse me / sorry','permisi / maaf','expression','N5'],['tsukue','机','つくえ','desk','meja belajar','noun','N5'],['yasashii','優しい','やさしい','kind / gentle','baik hati / lembut','adjective','N5'],['yoru','夜','よる','night','malam','noun','N5'],['onegaishimasu','お願いします','おねがいします','please','tolong / mohon','expression','N5']
+];
+// Remove accidental duplicate while preserving order.
+const unique=[]; const seen=new Set(); words.forEach(w=>{if(!seen.has(w[0])){seen.add(w[0]);unique.push(w)}}); unique.sort((a,b)=>a[0].localeCompare(b[0]));
+const phrases = [
+['good night','おやすみ','おやすみ','oyasumi','good night','selamat tidur','sleep'],['selamat tidur','おやすみ','おやすみ','oyasumi','good night','selamat tidur','sleep'],
+['selamat makan','いただきます','いただきます','itadakimasu','said before eating','ucapan sebelum makan','meal'],['itadakimasu','いただきます','いただきます','itadakimasu','said before eating','ucapan sebelum makan','meal'],
+['arigatou','ありがとう','ありがとう','arigatou','thank you','terima kasih','gratitude'],['arigatou gozaimasu','ありがとうございます','ありがとうございます','arigatou gozaimasu','thank you (polite)','terima kasih (sopan)','gratitude'],['doumo arigatou','どうもありがとう','どうもありがとう','doumo arigatou','thank you very much','terima kasih banyak','gratitude'],['arigatou gozaimashita','ありがとうございました','ありがとうございました','arigatou gozaimashita','thank you (for what was done)','terima kasih atas yang telah dilakukan','gratitude'],['thank you','ありがとうございます','ありがとうございます','arigatou gozaimasu','thank you','terima kasih','gratitude'],['terima kasih','ありがとうございます','ありがとうございます','arigatou gozaimasu','thank you','terima kasih','gratitude'],
+['ohayou','おはよう','おはよう','ohayou','good morning (casual)','selamat pagi (kasual)','morning'],['ohayou gozaimasu','おはようございます','おはようございます','ohayou gozaimasu','good morning','selamat pagi','morning'],['selamat pagi','おはようございます','おはようございます','ohayou gozaimasu','good morning','selamat pagi','morning'],['good morning','おはようございます','おはようございます','ohayou gozaimasu','good morning','selamat pagi','morning'],
+['konnichiwa','こんにちは','こんにちは','konnichiwa','hello / good afternoon','halo / selamat siang','greeting'],['hello','こんにちは','こんにちは','konnichiwa','hello','halo','greeting'],['good evening','こんばんは','こんばんは','konbanwa','good evening','selamat malam','evening'],['selamat malam','こんばんは','こんばんは','konbanwa','good evening','selamat malam','evening'],['oyasumi','おやすみ','おやすみ','oyasumi','good night','selamat tidur','sleep'],
+['film','映画','えいが','eiga','movie','film','media'],['movie','映画','えいが','eiga','movie','film','media'],['saya suka film','映画が好きです','えいががすきです','eiga ga suki desu','I like movies','Saya suka film','media'],['i like movies','映画が好きです','えいががすきです','eiga ga suki desu','I like movies','Saya suka film','media'],['saya mau makan','食べたいです','たべたいです','tabetai desu','I want to eat','Saya mau makan','meal'],['i want to eat','食べたいです','たべたいです','tabetai desu','I want to eat','Saya mau makan','meal'],['saya ingin minum air','水を飲みたいです','みずをのみたいです','mizu o nomitai desu','I want to drink water','Saya ingin minum air','meal'],['i want to drink water','水を飲みたいです','みずをのみたいです','mizu o nomitai desu','I want to drink water','Saya ingin minum air','meal'],
+['sampai jumpa','また会いましょう','またあいましょう','mata aimashou','see you again','sampai jumpa','farewell'],['see you again','また会いましょう','またあいましょう','mata aimashou','see you again','sampai jumpa','farewell'],['nama saya','私の名前','わたしのなまえ','watashi no namae','my name','nama saya','introduction'],['jepang','日本','にほん','nihon','Japan','Jepang','country'],['bahasa jepang','日本語','にほんご','nihongo','Japanese language','bahasa Jepang','language'],['electricity','電気','でんき','denki','electricity','listrik','objects'],['listrik','電気','でんき','denki','electricity','listrik','objects'],['camera','カメラ','カメラ','kamera','camera','kamera','objects'],['kamera','カメラ','カメラ','kamera','camera','kamera','objects'],['sumimasen','すみません','すみません','sumimasen','excuse me / sorry','permisi / maaf','politeness'],['excuse me','すみません','すみません','sumimasen','excuse me','permisi','politeness'],['onegaishimasu','お願いします','おねがいします','onegaishimasu','please','tolong / mohon','politeness'],['please','お願いします','おねがいします','onegaishimasu','please','tolong / mohon','politeness'],['daijoubu','大丈夫','だいじょうぶ','daijoubu','okay / all right','tidak apa-apa','reassurance'],
+// Universal root-word continuations: aliases are explicit local data, not generated translations.
+['good afternoon','こんにちは','こんにちは','konnichiwa','good afternoon','selamat siang / sore','daytime'],['good luck','頑張って','がんばって','ganbatte','good luck / do your best','semoga berhasil','encouragement'],['good job','よくできました','よくできました','yoku dekimashita','well done / good job','kerja bagus','encouragement'],
+['selamat sore','こんにちは','こんにちは','konnichiwa','good afternoon','selamat sore','daytime'],['selamat jalan','気をつけて','きをつけて','ki o tsukete','take care on your way','hati-hati di jalan','farewell'],['take care','気をつけて','きをつけて','ki o tsukete','take care','hati-hati','farewell'],
+['selamat menikmati','楽しんでください','たのしんでください','tanoshinde kudasai','please enjoy','selamat menikmati','enjoyment'],['enjoy','楽しんでください','たのしんでください','tanoshinde kudasai','please enjoy','silakan menikmati','enjoyment'],
+['selamat ulang tahun','お誕生日おめでとうございます','おたんじょうびおめでとうございます','otanjoubi omedetou gozaimasu','happy birthday','selamat ulang tahun','birthday'],['happy birthday','お誕生日おめでとうございます','おたんじょうびおめでとうございます','otanjoubi omedetou gozaimasu','happy birthday','selamat ulang tahun','birthday'],
+['selamat datang','ようこそ','ようこそ','youkoso','welcome','selamat datang','welcome'],['welcome','ようこそ','ようこそ','youkoso','welcome','selamat datang','welcome'],
+['selamat bekerja','お仕事頑張ってください','おしごとがんばってください','oshigoto ganbatte kudasai','good luck at work','semoga lancar bekerja','encouragement']
+];
+const state={letter:'',page:1,pageSize:24};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>s.toLocaleLowerCase().normalize('NFKC').replace(/[ō]/g,'ou').replace(/[ū]/g,'uu').replace(/[ā]/g,'aa').replace(/[ī]/g,'ii').replace(/[ē]/g,'ei').trim();
+function findWord(q){const n=norm(q); return unique.find(w=>[w[0],w[1],w[2],w[3],w[4],w[5]].some(v=>norm(v)===n)) || unique.find(w=>[w[0],w[1],w[2],w[3],w[4],w[5]].some(v=>norm(v).includes(n))) }
+function findPhrase(q){const n=norm(q);return phrases.find(p=>norm(p[0])===n)||phrases.find(p=>norm(p[3])===n||norm(p[1])===n||norm(p[2])===n)}
+function relatedPhrases(match){if(!match||!match[6])return [];const seen=new Set([`${norm(match[1])}|${norm(match[3])}`]);return phrases.filter(p=>p[6]===match[6]).filter(p=>{const k=`${norm(p[1])}|${norm(p[3])}`;if(seen.has(k))return false;seen.add(k);return true}).slice(0,4)}
+function findPhraseSuggestions(q){
+  const n=norm(q);
+  if(n.length<2||n.length>40||n.includes(' '))return [];
+  const seen=new Set();
+  const matches=phrases.filter(p=>norm(p[0]).startsWith(n+' ')).filter(p=>{
+    const key=`${norm(p[1])}|${norm(p[3])}`;
+    if(seen.has(key))return false;
+    seen.add(key);return true;
+  });
+  const priority=n==='selamat'?['selamat makan','selamat jalan','selamat menikmati','selamat ulang tahun','selamat datang','selamat pagi','selamat malam','selamat tidur','selamat sore']:n==='good'?['good night','good morning','good afternoon','good evening','good luck','good job']:[];
+  if(priority.length)matches.sort((a,b)=>{const ai=priority.indexOf(norm(a[0])),bi=priority.indexOf(norm(b[0]));return (ai<0?99:ai)-(bi<0?99:bi)});
+  return matches.slice(0,8);
+}
+function renderRelatedResults(match){const region=$('relatedResults');const related=relatedPhrases(match);if(!related.length){region.hidden=true;region.innerHTML='';return}region.innerHTML=`<div class="related-heading"><div class="related-title">Bentuk lengkap &amp; hasil terkait</div><div class="related-count">${related.length} hasil terkait</div></div><div class="related-list">${related.map((p,i)=>`<article class="related-card"><div class="related-jp">${esc(p[1])}</div><div class="related-romaji">${esc(p[3])}</div><div class="related-meaning">${esc(p[4])} · ${esc(p[5])}</div><div class="related-meta"><span class="pill">frasa</span><span class="pill">offline</span></div><div class="related-actions"><button class="related-copy" type="button" data-related-copy="${i}" data-copy-value="${esc(p[1])}">Copy Japanese</button><button class="related-copy" type="button" data-related-copy="${i}" data-copy-value="${esc(p[3])}">Copy Romaji</button></div></article>`).join('')}</div>`;region.hidden=false}
+function detectLanguage(q){
+  const n=norm(q);
+  if(/[\u3040-\u30ff\u3400-\u9fff]/.test(q))return {key:'japanese',label:'Japanese'};
+  const phrase=phrases.find(p=>norm(p[0])===n);
+  if(phrase){
+    const idInputs=new Set(['film','saya suka film','saya mau makan','selamat pagi','terima kasih','sampai jumpa','nama saya','jepang','bahasa jepang','listrik','kamera','selamat tidur','selamat makan']);
+    const romajiInputs=new Set(['arigatou','ohayou','konnichiwa']);
+    if(romajiInputs.has(n))return {key:'romaji',label:'Romaji'};
+    return idInputs.has(n)?{key:'id',label:'Indonesia'}:{key:'en',label:'English'};
+  }
+  if(phrases.some(p=>norm(p[3])===n)||unique.some(w=>norm(w[0])===n))return {key:'romaji',label:'Romaji'};
+  const idHints=/\b(saya|kamu|aku|makan|minum|selamat|tidur|pagi|siang|malam|terima|kasih|suka|ingin|mau|jepang|bahasa|dan|yang|untuk)\b/i;
+  const enHints=/\b(the|you|good|night|morning|thank|please|want|eat|drink|hello|how|are|i|like|movie|movies|see|again)\b/i;
+  if(idHints.test(q))return {key:'id',label:'Indonesia'};
+  if(enHints.test(q))return {key:'en',label:'English'};
+  return {key:'unknown',label:'Belum pasti'};
+}
+function showResult(jp,romaji,meaning,meta=[],notice='',source='Belum ada input',detectedKey='unknown'){
+  $('resultJP').textContent=jp||'—';
+  $('resultRomaji').textContent=romaji||'—';
+  $('resultMeaning').textContent=meaning||'—';
+  $('resultMeta').innerHTML=meta.map(x=>`<span class="pill">${esc(x)}</span>`).join('');
+  $('detectedLanguage').textContent=source==='Belum ada input'?source:`Sumber terdeteksi: ${source}`;
+  $('result').hidden=false;
+  $('resultJP').hidden=false;
+  $('resultRomaji').hidden=detectedKey==='romaji';
+  $('resultMeaning').hidden=false;
+  $('suggestions').hidden=true;
+  $('suggestions').innerHTML='';
+  $('relatedResults').hidden=true;
+  $('relatedResults').innerHTML='';
+  if(notice)$('notice').textContent=notice;
+}
+function editDistance(a,b){
+  if(Math.abs(a.length-b.length)>3)return 99;
+  let prev=Array.from({length:b.length+1},(_,i)=>i);
+  for(let i=1;i<=a.length;i++){
+    const curr=[i];let rowMin=i;
+    for(let j=1;j<=b.length;j++){
+      curr[j]=Math.min(curr[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
+      rowMin=Math.min(rowMin,curr[j]);
+    }
+    if(rowMin>3)return 99;
+    prev=curr;
+  }
+  return prev[b.length];
+}
+function findSuggestions(q){
+  const n=norm(q);
+  if(n.length<3||n.length>60)return [];
+  const candidates=[];
+  const add=(alias,kind)=>{
+    const a=norm(alias);
+    if(!a||a===n||a.length<3||a.length>60)return;
+    const distance=editDistance(n,a);
+    const limit=Math.max(1,Math.floor(Math.min(n.length,a.length)*0.22));
+    if(distance>0&&distance<=limit)candidates.push({alias,kind,distance});
+  };
+  unique.forEach(w=>[w[0],w[1],w[2],w[3],w[4]].forEach(v=>add(v,'word')));
+  phrases.forEach(p=>[p[0],p[1],p[2],p[3],p[4],p[5]].forEach(v=>add(v,'phrase')));
+  const seen=new Set();
+  return candidates.sort((a,b)=>a.distance-b.distance||Math.abs(a.alias.length-q.length)-Math.abs(b.alias.length-q.length))
+    .filter(x=>{const k=norm(x.alias);if(seen.has(k))return false;seen.add(k);return true;})
+    .slice(0,3).map(x=>x.alias);
+}
+const sentenceCorrections = [
+  ['i dont no were to go', "I don't know where to go"],
+  ['i dont know were to go', "I don't know where to go"],
+  ['i want eat', 'I want to eat'],
+  ['how are you doin', 'How are you doing'],
+  ['selmat mkan', 'selamat makan'],
+  ['terima kasi', 'terima kasih'],
+  ['sampai jumppa', 'sampai jumpa']
+];
+let correctionOriginal = '';
+let suppressAutoCorrection = false;
+function correctionAliases(){
+  const out=[];
+  unique.forEach(w=>[w[0],w[1],w[2],w[3],w[4]].forEach(alias=>out.push({alias,kind:'word'})));
+  phrases.forEach(p=>[p[0],p[1],p[2],p[3],p[4],p[5]].forEach(alias=>out.push({alias,kind:'phrase'})));
+  return out;
+}
+function findAutoCorrection(q){
+  const n=norm(q).replace(/[.!?]+$/,'').trim();
+  if(!n||n.length<3||n.length>100)return {status:'none',candidates:[]};
+  const curated=sentenceCorrections.find(([from])=>norm(from)===n);
+  if(curated)return {status:'auto',value:curated[1],confidence:'high',reason:'pola kalimat lokal'};
+  const candidates=[];const seen=new Set();
+  for(const item of correctionAliases()){
+    const alias=item.alias;const a=norm(alias).replace(/[.!?]+$/,'').trim();
+    if(!a||a===n||a.length<3||a.length>100)continue;
+    // Whole-phrase fuzzy match. Longer sentences require a proportionally strong match.
+    const distance=editDistance(n,a);
+    const limit=n.includes(' ')||a.includes(' ')?Math.max(1,Math.floor(Math.min(n.length,a.length)*0.16)):Math.max(1,Math.floor(Math.min(n.length,a.length)*0.18));
+    if(distance<1||distance>limit)continue;
+    const key=a;
+    if(seen.has(key))continue;seen.add(key);
+    candidates.push({value:alias,distance,ratio:distance/Math.max(n.length,a.length),kind:item.kind});
+  }
+  candidates.sort((a,b)=>a.distance-b.distance||a.ratio-b.ratio||a.value.length-b.value.length);
+  if(!candidates.length)return {status:'none',candidates:[]};
+  const best=candidates[0];
+  const ties=candidates.filter(c=>c.distance===best.distance&&Math.abs(c.ratio-best.ratio)<0.025);
+  const uniqueValues=[...new Map(ties.map(c=>[norm(c.value),c])).values()];
+  if(uniqueValues.length>1)return {status:'ambiguous',candidates:candidates.slice(0,3).map(c=>c.value)};
+  // Do not auto-rewrite a multiword sentence based on a weak/short token coincidence.
+  if(best.ratio<=0.18 && (!n.includes(' ') || best.kind==='phrase'))return {status:'auto',value:best.value,confidence:'high',reason:'kecocokan dataset lokal'};
+  if(best.ratio<=0.22)return {status:'ambiguous',candidates:candidates.slice(0,3).map(c=>c.value)};
+  return {status:'none',candidates:[]};
+}
+function renderCorrectionStatus(original, corrected){
+  const box=$('correctionStatus');
+  if(!original||!corrected||norm(original)===norm(corrected)){box.hidden=true;box.innerHTML='';return;}
+  box.innerHTML=`<span><strong>Dikoreksi:</strong> “${esc(original)}” → “${esc(corrected)}” <span class="pill">offline</span></span><button type="button" id="undoCorrection">Kembalikan teks asli</button>`;
+  box.hidden=false;
+  $('undoCorrection').addEventListener('click',()=>{
+    const originalText=correctionOriginal;$('query').value=originalText;$('inputCount').textContent=`${originalText.length}/500`;
+    correctionOriginal='';box.hidden=true;box.innerHTML='';suppressAutoCorrection=true;translate();suppressAutoCorrection=false;
+  });
+}
+function renderAmbiguousCorrections(q, candidates){
+  const region=$('suggestions');
+  if(!candidates.length){renderSuggestions(q);return;}
+  region.innerHTML=`<div class="suggestions-title">Mungkin yang kamu maksud? · Pilih koreksi yang sesuai</div><div class="suggestion-list">${candidates.map(v=>`<button type="button" class="suggestion-btn" data-suggestion="${esc(v)}">${esc(v)} ↗</button>`).join('')}</div>`;
+  region.hidden=false;
+}
+function renderSuggestions(q){
+  const region=$('suggestions');
+  const phraseChoices=findPhraseSuggestions(q);
+  if(phraseChoices.length){
+    region.innerHTML=`<div class="suggestions-title">Frasa terkait untuk “${esc(q)}” · pilih untuk melihat terjemahan</div><div class="suggestion-list">${phraseChoices.map(p=>`<button type="button" class="suggestion-btn" data-suggestion="${esc(p[0])}">${esc(p[0])} ↗</button>`).join('')}</div>`;
+    region.hidden=false;return;
+  }
+  const suggestions=findSuggestions(q);
+  if(!suggestions.length){region.hidden=true;region.innerHTML='';return;}
+  region.innerHTML=`<div class="suggestions-title">Mungkin yang kamu maksud? · Kecocokan terdekat dari dataset lokal</div><div class="suggestion-list">${suggestions.map(v=>`<button type="button" class="suggestion-btn" data-suggestion="${esc(v)}">${esc(v)} ↗</button>`).join('')}</div>`;
+  region.hidden=false;
+}
+function focusResultOnMobile(){
+  if(!matchMedia('(max-width:700px)').matches)return;
+  $('query').blur();
+  $('result').focus({preventScroll:true});
+  $('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function translate(){
+ let q=$('query').value.trim();
+ if(!q){$('result').hidden=true;$('suggestions').hidden=true;$('correctionStatus').hidden=true;return}
+ correctionOriginal='';$('correctionStatus').hidden=true;$('correctionStatus').innerHTML='';
+ let detected=detectLanguage(q), n=norm(q);
+ let p=findPhrase(q);
+ let w=unique.find(x=>[x[0],x[1],x[2],x[3],x[4],x[5]].some(v=>norm(v)===n));
+ // Exact valid input always wins; autocorrection is only considered after exact lookup fails.
+ if(p){showResult(p[1],p[3],`${p[4]} · ${p[5]}`,['frasa','offline'],'Kecocokan frasa dari dataset lokal.',detected.label,detected.key);renderRelatedResults(p);focusResultOnMobile();return}
+ if(w){showResult(w[1],w[0],`${w[3]} · ${w[4]}`,[w[6],w[5]],'Kecocokan kata dari dataset lokal.',detected.label,detected.key);renderSuggestions(q);focusResultOnMobile();return}
+ if(findPhraseSuggestions(q).length){showResult('Pilih konteks','—','Kata ini dapat membentuk beberapa frasa. Pilih frasa yang dimaksud untuk melihat terjemahan yang sesuai.',['pilih konteks','offline'],`Input ${detected.label==='Belum pasti'?'belum dapat dikenali dengan yakin':`terdeteksi sebagai ${detected.label}`}; pilih frasa dari dataset lokal.`,detected.label,detected.key);renderSuggestions(q);focusResultOnMobile();return}
+ if(!suppressAutoCorrection){
+   const correction=findAutoCorrection(q);
+   if(correction.status==='auto'){
+     const original=q;correctionOriginal=original;q=correction.value;$('query').value=q;$('inputCount').textContent=`${q.length}/500`;
+     detected=detectLanguage(q);n=norm(q);p=findPhrase(q);w=unique.find(x=>[x[0],x[1],x[2],x[3],x[4],x[5]].some(v=>norm(v)===n));
+     if(p){showResult(p[1],p[3],`${p[4]} · ${p[5]}`,['frasa','offline'],'Kecocokan setelah koreksi lokal.',detected.label,detected.key);renderRelatedResults(p);renderCorrectionStatus(original,q);focusResultOnMobile();return}
+     if(w){showResult(w[1],w[0],`${w[3]} · ${w[4]}`,[w[6],w[5]],'Kecocokan setelah koreksi lokal.',detected.label,detected.key);renderSuggestions(q);renderCorrectionStatus(original,q);focusResultOnMobile();return}
+   } else if(correction.status==='ambiguous'){
+     showResult('Perlu konfirmasi','—','Ada beberapa kemungkinan koreksi. Pilih saran yang sesuai; teks asli belum diubah.',['koreksi ambigu','offline'],'Koreksi lokal tidak cukup yakin untuk mengganti input otomatis.',detected.label,detected.key);
+     renderAmbiguousCorrections(q,correction.candidates);focusResultOnMobile();return;
+   }
+ }
+ const partial=unique.find(x=>[x[0],x[1],x[2],x[3],x[4],x[5]].some(v=>norm(v).includes(n)));
+ if(partial&&n.length>=2){showResult(partial[1],partial[0],`${partial[3]} · ${partial[4]}`,[partial[6],partial[5]],'Kecocokan sebagian dari dataset lokal.',detected.label,detected.key);if(correctionOriginal)renderCorrectionStatus(correctionOriginal,q);focusResultOnMobile();return}
+ showResult('Tidak ditemukan','—','Coba kata atau frasa lain yang tersedia di kamus.',['offline'],`Input ${detected.label==='Belum pasti'?'belum dapat dikenali dengan yakin':`terdeteksi sebagai ${detected.label}`}; dataset lokal tidak memiliki kecocokan.`,detected.label,detected.key);
+ renderSuggestions(q);if(correctionOriginal)renderCorrectionStatus(correctionOriginal,q);focusResultOnMobile();
+}
+$('translate').addEventListener('click',translate);
+$('clear').addEventListener('click',()=>{$('query').value='';$('inputCount').textContent='0/500';$('result').hidden=true;$('suggestions').hidden=true;$('suggestions').innerHTML='';$('correctionStatus').hidden=true;$('correctionStatus').innerHTML='';correctionOriginal='';$('query').focus()});
+$('query').addEventListener('input',()=>{$('inputCount').textContent=`${$('query').value.length}/500`;$('correctionStatus').hidden=true;$('correctionStatus').innerHTML='';correctionOriginal='';if(!$('query').value.trim()){$('result').hidden=true;$('suggestions').hidden=true}});
+$('query').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing&&e.keyCode!==229){e.preventDefault();translate()}});
+$('suggestions').addEventListener('click',e=>{const btn=e.target.closest('[data-suggestion]');if(!btn)return;$('query').value=btn.dataset.suggestion;$('inputCount').textContent=`${$('query').value.length}/500`;translate()});
+$('relatedResults').addEventListener('click',async e=>{const btn=e.target.closest('[data-copy-value]');if(!btn)return;try{await navigator.clipboard.writeText(btn.dataset.copyValue);const original=btn.textContent;btn.textContent='Copied';setTimeout(()=>btn.textContent=original,900)}catch(_){}});
+$('copy').addEventListener('click',async()=>{const text=['resultJP','resultRomaji','resultMeaning'].filter(id=>!$(id).hidden).map(id=>$(id).textContent).join('\n');try{await navigator.clipboard.writeText(text);$('copy').textContent='Copied';setTimeout(()=>$('copy').textContent='Copy',900)}catch(_){}});
+$('speak').addEventListener('click',()=>{if(!('speechSynthesis'in window))return;const jp=$('resultJP').textContent;if(!jp||jp==='—'||jp==='Tidak ditemukan')return;const u=new SpeechSynthesisUtterance(jp);u.lang='ja-JP';speechSynthesis.cancel();speechSynthesis.speak(u)});
+function renderAlphabet(){const letters=[...new Set(unique.map(w=>w[0][0].toUpperCase()))].sort();$('alphabet').innerHTML=letters.map(l=>`<button class="letter ${state.letter===l?'active':''}" data-letter="${l}">${l}</button>`).join('');document.querySelectorAll('.letter').forEach(b=>b.addEventListener('click',()=>{state.letter=state.letter===b.dataset.letter?'':b.dataset.letter;state.page=1;renderDict()}))}
+function renderPagination(total){const pages=Math.max(1,Math.ceil(total/state.pageSize));state.page=Math.min(state.page,pages);const p=state.page;const items=[];const add=(label,page,disabled=false,active=false,extra='')=>items.push(`<button class="page-btn ${active?'active ':''}${extra}" type="button" data-page="${page}" ${disabled?'disabled':''}>${label}</button>`);add('‹',p-1,p===1);let start=Math.max(1,p-2),end=Math.min(pages,p+2);if(start>1){add('1',1,false,p===1);if(start>2)items.push('<span class="page-ellipsis">…</span>')}for(let i=start;i<=end;i++)if(i!==1||start===1)add(String(i),i,false,i===p);if(end<pages){if(end<pages-1)items.push('<span class="page-ellipsis">…</span>');add(String(pages),pages,false,p===pages)}add('›',p+1,p===pages);items.push(`<select class="page-size" id="pageSize" aria-label="Entries per page"><option value="24" ${state.pageSize===24?'selected':''}>24 / page</option><option value="48" ${state.pageSize===48?'selected':''}>48 / page</option><option value="96" ${state.pageSize===96?'selected':''}>96 / page</option></select>`);items.push(`<div class="pagination-note">Page ${p} of ${pages} · ${total.toLocaleString()} matching entries</div>`);$('pagination').innerHTML=items.join('');document.querySelectorAll('#pagination [data-page]').forEach(b=>b.addEventListener('click',()=>{const next=Number(b.dataset.page);if(!Number.isFinite(next)||next<1||next>pages||next===state.page)return;state.page=next;renderDict();$('dictionary').scrollIntoView({behavior:'smooth',block:'start'})}));$('pageSize').addEventListener('change',e=>{state.pageSize=Number(e.target.value)||24;state.page=1;renderDict()})}
+function renderDict(){renderAlphabet();const q=norm($('dictSearch').value),level=$('levelFilter').value,type=$('typeFilter').value;const list=unique.filter(w=>{const text=w.slice(0,6).join(' ').toLocaleLowerCase();return (!q||norm(text).includes(q))&&(level==='all'||w[6]===level)&&(type==='all'||w[5]===type)&&(!state.letter||w[0][0].toUpperCase()===state.letter)});const pages=Math.max(1,Math.ceil(list.length/state.pageSize));if(state.page>pages)state.page=pages;const start=(state.page-1)*state.pageSize;const pageItems=list.slice(start,start+state.pageSize);$('dictCount').textContent=list.length;$('dictFilterLabel').textContent=q?`“${$('dictSearch').value}”`:state.letter?`Huruf ${state.letter}`:'All entries';$('empty').hidden=list.length>0;$('entries').innerHTML=pageItems.map(w=>`<article class="entry"><div class="entry-romaji">${esc(w[0])}</div><div><div class="entry-jp">${esc(w[1])}</div><div class="entry-kana">${esc(w[2])}</div></div><div class="entry-meaning"><b>${esc(w[4])}</b> · ${esc(w[3])}</div><div class="entry-level">${esc(w[6])}<br>${esc(w[5])}</div></article>`).join('');renderPagination(list.length)}
+['dictSearch','levelFilter','typeFilter'].forEach(id=>$(id).addEventListener('input',()=>{state.page=1;renderDict()}));renderDict();
+document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>{document.getElementById(b.dataset.scroll).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}));
+const theme=$('theme');function applyTheme(v){document.documentElement.dataset.theme=v;theme.textContent=v==='dark'?'☀':'☾';try{localStorage.setItem('kamusora-theme',v)}catch(_){}}try{applyTheme(localStorage.getItem('kamusora-theme')==='light'?'light':'dark')}catch(_){applyTheme('dark')}theme.addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+})();
+</script>
+</body>
+</html>

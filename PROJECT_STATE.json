@@ -1,0 +1,47 @@
+{
+  "project": "KAMUSORA",
+  "version": "0.3.6",
+  "status": "active",
+  "milestone": "Universal hybrid auto-correction for words, phrases, and selected sentence patterns",
+  "current_next_gate": "Expand local correction coverage and improve confidence calibration without changing valid exact inputs.",
+  "continuity_layer": {
+    "boot_file": "PROJECT_BOOT.md",
+    "handoff_file": "PROJECT_CONTINUATION.md",
+    "release_manifest": "docs/RELEASE-MANIFEST.md",
+    "machine_state": "PROJECT_STATE.json",
+    "artifact_is_continuous": true,
+    "chat_is_ephemeral": true
+  },
+  "mandatory_context": [
+    "docs/CHECKPOINT.md",
+    "README.md",
+    "docs/STATE.md",
+    "docs/BACKLOG.md",
+    "docs/CHANGELOG.md",
+    "docs/ARCHITECTURE.md",
+    "docs/TUTORIAL.md",
+    "docs/Perjalanan.html",
+    "docs/Glosarium.html",
+    "docs/SECURITY.md",
+    "source",
+    "tests"
+  ],
+  "language": "Bahasa Indonesia — natural, santai, jelas, tidak kaku",
+  "collaboration_style": {
+    "role": "Co-Developer and discussion partner",
+    "proactive_feedback": true,
+    "yes_man": false,
+    "resource_aware": true,
+    "default_cost_preference": "free/local/offline/low-cost when sufficient"
+  },
+  "source_of_truth": [
+    "docs/CHECKPOINT.md",
+    "docs/STATE.md",
+    "docs/BACKLOG.md",
+    "docs/CHANGELOG.md",
+    "README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/SECURITY.md"
+  ],
+  "hardrules_revision": "Knowledge-surface gate is fail-closed and explicit; existing canonical surfaces cannot be implicitly excluded. Perjalanan template is locked: content layer is append-only, presentation layer is fingerprinted (CHECKPOINT 3.27A)."
+}

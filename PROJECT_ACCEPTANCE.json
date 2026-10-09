@@ -1,0 +1,20 @@
+{
+  "status": "accepted",
+  "selected_concept": {
+    "name": "ROMAJI",
+    "summary": "Offline-first Japanese/Romaji translator and large Romaji-indexed dictionary for English and Indonesian users.",
+    "core_flow": "EN/ID ↔ Japanese + Romaji, plus Romaji/Japanese lookup and A-Z dictionary browsing.",
+    "visual_direction": "Editorial cream/black/red interface based on the approved index.html visual direction.",
+    "id": "romaji-v1",
+    "title": "ROMAJI — Japanese ↔ Romaji"
+  },
+  "approval": {
+    "required": true,
+    "approved": true,
+    "approved_by": "user",
+    "approved_at": "2026-10-08"
+  },
+  "provenance": {
+    "acceptance_record_is_canonical_for_project_birth": true
+  }
+}

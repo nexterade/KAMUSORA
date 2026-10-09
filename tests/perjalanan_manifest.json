@@ -1,0 +1,50 @@
+[
+  {
+    "id": "e-2026-10-08-romaji",
+    "date": "2026-10-08",
+    "title": "ROMAJI — Japanese ↔ Romaji, with English & Indonesian meaning",
+    "sha256": "cb19e05041e75ad6bd89da8cfe2e51e9682ca6b8971b7c80b4353e8ea15cdce7"
+  },
+  {
+    "id": "e-2026-10-09-ui-reliability",
+    "date": "2026-10-09",
+    "title": "UI Reliability — Theme and Navigation Repair",
+    "sha256": "a8d5ecc8253106ffe52cab4e971476cef7e521e3b439d6a02394c3e3f390ef61"
+  },
+  {
+    "id": "e-2026-10-09-translator-auto-detect",
+    "date": "2026-10-09",
+    "title": "Universal Translator Input — Auto-detect and Adaptive Results",
+    "sha256": "c979dd4b788a168f5bf55b4762ba5f300e3b350eb7a4c85de33cf2f58192b2ba"
+  },
+  {
+    "id": "e-2026-10-09-translator-interactions",
+    "date": "2026-10-09",
+    "title": "Translator Interaction Reliability — Adaptive Results and Mobile Submit",
+    "sha256": "aeee99e35aee9790d25ccf84e77ea957f05d4deb34550e84051bbf1c87cbc64b"
+  },
+  {
+    "id": "e-2026-10-09-related-results-dataset",
+    "date": "2026-10-09",
+    "title": "Exact-Match-First Results — Related Phrases and Dataset Expansion",
+    "sha256": "2d73c527234447579d90894b639b8a7e273c5169460576579b4c5bb04c4d4552"
+  },
+  {
+    "id": "e-2026-10-09-release-archive-hygiene",
+    "date": "2026-10-09",
+    "title": "Release Archive Hygiene — Preventing Nested ZIP Bundles",
+    "sha256": "b58ff75412ad90196638e864304ae6121d475f128513347d1d6047f6fca60f1e"
+  },
+  {
+    "id": "e-2026-10-09-universal-related-results",
+    "date": "2026-10-09",
+    "title": "Universal Related Results — Contextual Phrase Discovery",
+    "sha256": "c0325e75a9bc5b431585cdc442e300997ef9397cfe686ac7b50195100feed0e7"
+  },
+  {
+    "id": "e-2026-10-09-universal-auto-correction",
+    "date": "2026-10-09",
+    "title": "Universal Auto-Correction — Hybrid Word, Phrase, and Sentence Repair",
+    "sha256": "95e860d081bd27b88257dea8216cb14d16d13735eb232cf8db34c9a2e561dfe6"
+  }
+]

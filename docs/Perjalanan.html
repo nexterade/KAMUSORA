@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="id" data-theme="dark" data-perjalanan-template="genesis-perjalanan" data-perjalanan-template-version="1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F4F5EF">
+<meta name="description" content="Genesis — catatan sejarah dan perjalanan project.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"/>
+<title>Awal Mula Kisah — Genesis</title>
+<!--
+  TEMPLATE LOCK (CHECKPOINT 3.27A): file ini punya DUA lapisan.
+  1) PRESENTATION LAYER = <style>, <script>, header, footer. Terkunci. Jangan diubah saat content-only update.
+     Fingerprint CSS/JS dijaga oleh tests/perjalanan_template_lock.json.
+  2) CONTENT LAYER = hanya area di antara PERJALANAN CONTENT START dan END. Satu-satunya tempat yang boleh diedit.
+     Tambah entry BARU di akhir part yang relevan (urut kronologis), atau part baru di akhir. Jangan menulis ulang entry lama.
+  Skema entry (wajib):
+    <article class="entry-card" id="e-YYYY-MM-DD-slug" data-date="YYYY-MM-DD" data-basis="fact|summary|inference">
+      <div class="entry-meta"><time datetime="YYYY-MM-DD">YYYY-MM-DD</time><span class="basis" data-basis="…">LABEL</span></div>
+      <h3>Judul</h3>
+      <div class="entry-body"><p>…</p></div>
+      <p class="evidence">Evidence: …</p>   (opsional)
+    </article>
+  Setelah menambah entry: python3 scripts/perjalanan_tool.py manifest --append, lalu python3 scripts/perjalanan_tool.py check
+-->
+<style>
+:root{--bg:#F4F5EF;--surface:#FFFFFF;--surface-2:#ECEFE8;--text:#141414;--muted:#5F635F;--border:#D9DDD5;--accent:#176B1D;--accent-soft:#E4F4E5;--shadow:rgba(20,20,20,.10);--display:"LEMON MILK","Lemon/Milk",Arial,sans-serif;--body:"Open Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+:root[data-theme="dark"]{--bg:#141414;--surface:#1C1C1C;--surface-2:#101010;--text:#F2F2F2;--muted:#A7A7A7;--border:#2B2B2B;--accent:#2BEE34;--accent-soft:#102A12;--shadow:rgba(0,0,0,.34)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65}
+button,input{font:inherit}button{cursor:pointer}
+::selection{background:var(--accent);color:#061006}
+.shell{width:min(1480px,100%);margin:auto;min-height:100vh;background:var(--surface);box-shadow:0 0 70px var(--shadow)}
+.sitebar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:24px;min-height:62px;padding:0 28px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(14px)}
+.brand{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;flex:0 0 auto}.brand-mark{width:30px;height:30px;display:block}.brand-word{font:600 16px/1 var(--display);letter-spacing:.18em}.main-nav{display:flex;align-items:center;gap:6px;margin-left:12px}.main-nav a{padding:9px 12px;border-radius:7px;color:var(--muted);text-decoration:none;font:600 11px/1 var(--body);letter-spacing:.06em;text-transform:uppercase}.main-nav a:hover,.main-nav a.active{color:var(--text);background:var(--surface-2)}.main-nav a.active{box-shadow:inset 0 -2px var(--accent)}.nav-tools{display:flex;align-items:center;gap:8px;margin-left:auto}.nav-btn{width:38px;height:38px;border:1px solid var(--border);border-radius:9px;background:var(--surface);color:var(--text);display:inline-flex;align-items:center;justify-content:center}.nav-btn:hover,.nav-btn:focus-visible{border-color:var(--accent);outline:2px solid color-mix(in srgb,var(--accent) 28%,transparent);outline-offset:1px}.theme-toggle{color:var(--accent)}
+.masthead{padding:34px 46px 24px;border-bottom:1px solid var(--border)}.masthead-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}.kicker{font:700 11px/1.2 var(--display);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}.title{margin:7px 0 0;font-family:var(--display);font-size:clamp(38px,6vw,72px);line-height:.94;letter-spacing:-.04em;font-weight:700}.subtitle{margin:12px 0 0;color:var(--muted);font-size:16px;max-width:780px}.edition{font:700 11px/1.4 var(--display);letter-spacing:.12em;text-align:right;color:var(--muted);white-space:nowrap}.edition b{display:block;color:var(--text);font-size:14px}
+.toolbar{display:grid;grid-template-columns:minmax(240px,1fr) auto auto;gap:10px;margin-top:24px}.search{display:flex;align-items:center;border:1px solid var(--border);background:var(--surface);border-radius:9px;min-height:46px}.search span{padding:0 12px;color:var(--accent);font:700 15px var(--body)}.search input{width:100%;border:0;outline:0;background:transparent;padding:10px 10px 10px 0;color:var(--text);font-family:var(--body);font-size:14px}.search input::placeholder{color:var(--muted)}.tool-btn{border:1px solid var(--border);background:var(--surface);border-radius:9px;padding:0 14px;color:var(--text);font:700 12px var(--body);letter-spacing:.04em}.tool-btn:hover,.tool-btn:focus-visible{border-color:var(--accent);outline:2px solid color-mix(in srgb,var(--accent) 22%,transparent);outline-offset:1px}.stats{display:flex;align-items:center;gap:20px;padding:12px 0 0;color:var(--muted);font:12px var(--body)}.stats b{color:var(--text)}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:calc(100vh - 240px)}.layout.sidebar-collapsed{grid-template-columns:minmax(0,1fr)}.layout.sidebar-collapsed .index{display:none}.sidebar-backdrop{display:none}.index{border-right:1px solid var(--border);padding:28px 22px;position:sticky;top:62px;align-self:start;max-height:calc(100vh - 62px);overflow:auto;background:var(--surface-2)}.index h2{margin:0 0 14px;font:700 14px var(--display);letter-spacing:.06em}.index-note{font:11px/1.5 var(--body);color:var(--muted);margin-bottom:16px}.alphabet{display:flex;flex-wrap:wrap;gap:4px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}.letter{width:27px;height:27px;border:1px solid var(--border);background:transparent;color:var(--muted);font:700 11px var(--body);border-radius:6px}.letter:hover,.letter.active{background:var(--accent);border-color:var(--accent);color:#071007}.content{padding:30px 42px 60px;min-width:0}.content-head{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:4px}.content-head h2{margin:0;font-family:var(--display);font-size:24px}.content-head small{font:11px var(--body);color:var(--muted)}.dictionary{font-family:var(--body)}.letter-group{scroll-margin-top:84px}.letter-heading{display:flex;align-items:center;gap:12px;margin:28px 0 0;padding:7px 0 5px;border-bottom:1px solid var(--border);font:700 18px var(--display);color:var(--accent)}.letter-heading:after{content:"";height:1px;background:var(--border);flex:1}.entry{display:grid;grid-template-columns:minmax(180px,27%) minmax(0,1fr);gap:20px;padding:13px 8px;border-bottom:1px dotted var(--border);scroll-margin-top:84px;border-radius:6px}.entry:hover{background:var(--accent-soft)}.term{font-weight:700;font-size:16px;color:var(--text)}.term-meta{display:block;margin-top:2px;font:10px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}.term-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}.tag-chip,.provenance{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:2px 7px;font:700 9px/1.3 var(--body);letter-spacing:.04em;color:var(--muted);background:var(--surface-2)}.tag-chip.primary{border-color:color-mix(in srgb,var(--accent) 48%,var(--border));color:var(--accent)}.provenance{border-style:dashed;text-transform:uppercase;margin-left:2px}.definition{font-size:15px;color:var(--text)}.example{display:block;margin-top:4px;color:var(--muted);font-size:13px}.example code{font:12px var(--body);background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:1px 4px}.no-results{padding:40px 0;text-align:center;color:var(--muted);font-size:16px}.footer{border-top:1px solid var(--border);padding:22px 46px 34px;display:flex;justify-content:space-between;gap:20px;font:11px/1.5 var(--body);color:var(--muted)}.footer b{color:var(--text)}mark{background:var(--accent);color:#061006;padding:0 2px;border-radius:2px}.float-top{position:fixed;right:22px;bottom:22px;z-index:30;width:48px;height:48px;border:1px solid var(--accent);border-radius:50%;background:var(--surface);color:var(--accent);font:800 18px var(--body);box-shadow:0 12px 28px var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s ease}.float-top.visible{opacity:1;transform:none;pointer-events:auto}
+body,.shell,.sitebar,.index,.search,.tool-btn,.entry{transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
+@media(max-width:900px){.sitebar{padding:0 16px}.main-nav{display:none}.nav-tools{margin-left:auto}.masthead{padding:28px 20px 20px}.masthead-top{align-items:flex-start}.edition{display:none}.toolbar{grid-template-columns:1fr auto}.layout{grid-template-columns:1fr}.index{position:fixed;z-index:35;left:0;top:62px;width:min(320px,88vw);height:calc(100vh - 62px);max-height:none;border-right:1px solid var(--border);border-bottom:0;box-shadow:20px 0 40px var(--shadow);transform:translateX(-105%);transition:transform .2s ease}.sidebar-backdrop{position:fixed;z-index:34;inset:62px 0 0;border:0;background:rgba(0,0,0,.38);opacity:0;pointer-events:none;display:block;transition:opacity .2s ease}.layout.sidebar-open .index{transform:none}.layout.sidebar-open .sidebar-backdrop{opacity:1;pointer-events:auto}.layout.sidebar-collapsed .index{transform:translateX(-105%)}.content{padding:24px 20px 72px}}
+@media(max-width:620px){.brand-word{font-size:14px;letter-spacing:.16em}.title{font-size:42px}.subtitle{font-size:14px}.toolbar{grid-template-columns:1fr}.tool-btn{min-height:40px}.entry{grid-template-columns:1fr;gap:4px;padding:12px 4px}.term{font-size:15px}.definition{font-size:14px}.content-head{align-items:flex-start;flex-direction:column;gap:4px}.footer{padding:18px 20px;flex-direction:column}.float-top{right:16px;bottom:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+@media print{body{background:#fff;color:#141414}.shell{box-shadow:none}.sitebar,.index,.toolbar,.stats,.footer,.float-top,.sidebar-backdrop{display:none}.layout{display:block}.content{padding:20px}.entry{break-inside:avoid}.letter-heading{break-after:avoid}}
+
+/* ===== Perjalanan layer (content-specific; shares tokens above) ===== */
+.timeline{margin-top:6px}
+.part{scroll-margin-top:84px;margin-top:34px}
+.part:first-child{margin-top:20px}
+.part-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--border);padding-bottom:8px}
+.part-no{font:700 11px/1 var(--display);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.part-title{margin:0;font:700 22px/1.2 var(--display)}
+.part-summary{margin:10px 0 0;color:var(--muted);font-size:14px;max-width:780px}
+.entry-list{position:relative;margin:20px 0 0 7px;padding-left:28px;border-left:2px solid var(--border)}
+.entry-card{position:relative;padding:2px 8px 24px 0;scroll-margin-top:84px;border-radius:6px}
+.entry-card:before{content:"";position:absolute;left:-37px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.entry-card:target{background:var(--accent-soft)}
+.entry-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.entry-meta time{font:700 11px/1 var(--body);letter-spacing:.1em;color:var(--accent)}
+.basis{display:inline-flex;align-items:center;border:1px dashed var(--border);border-radius:999px;padding:2px 8px;font:700 9px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
+.basis[data-basis="fact"]{border-style:solid;border-color:color-mix(in srgb,var(--accent) 48%,var(--border));color:var(--accent)}
+.entry-card h3{margin:7px 0 6px;font:700 17px/1.35 var(--body);color:var(--text)}
+.entry-body{font-size:15px;color:var(--text)}.entry-body p{margin:0 0 .8em}.entry-body p:last-child{margin-bottom:0}
+.entry-body code{font:12px var(--body);background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:1px 4px}
+.evidence{margin:10px 0 0;padding-top:7px;border-top:1px dotted var(--border);font-size:12px;color:var(--muted)}
+.toc-part{margin:0 0 16px}.toc-part-title{display:block;margin:0 0 6px;font:700 11px/1.3 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none}
+.toc-link{display:block;padding:5px 8px;border-radius:6px;color:var(--muted);text-decoration:none;font:12px/1.4 var(--body)}.toc-link:hover,.toc-link:focus-visible{background:var(--surface);color:var(--text)}.toc-date{display:block;font:700 9px/1.2 var(--body);letter-spacing:.08em;color:var(--accent)}
+.part[hidden],.entry-card[hidden]{display:none}
+@media(max-width:620px){.entry-list{margin-left:5px;padding-left:20px}.entry-card:before{left:-29px}.part-head{flex-direction:column;gap:4px}.part-title{font-size:19px}}
+@media print{.entry-card{break-inside:avoid}.part-head{break-after:avoid}.entry-card:target{background:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="sitebar" aria-label="Project Genesis navigation"><a class="brand" href="../" aria-label="Project Genesis — project overview"><img class="brand-mark" src="../favicon.svg" alt=""><span class="brand-word">GENESIS</span></a><nav class="main-nav" aria-label="Primary"><a href="../">HOME</a><a class="active" href="Perjalanan.html" aria-current="page">Perjalanan</a><a href="Glosarium.html">Glossary</a></nav><div class="nav-tools"><button class="nav-btn" id="sidebarToggle" type="button" aria-label="Toggle perjalanan index" aria-controls="sidebarIndex" aria-pressed="false">☰</button><button class="nav-btn theme-toggle" id="themeToggle" type="button" aria-label="Ganti mode tampilan" aria-pressed="false">☾</button></div></header>
+<header class="masthead">
+  <div class="masthead-top">
+    <div>
+      <div class="kicker">GENESIS · CATATAN SEJARAH</div>
+      <h1 class="title">Awal Mula Kisah</h1>
+      <p class="subtitle">Catatan sejarah dan origin project: apa yang terjadi, kapan, dan keputusan apa yang diambil. Bukan pengganti export percakapan asli.</p>
+    </div>
+    <div class="edition"><b>CATATAN PENCIPTAAN</b>HISTORICAL RECORD<br>Standalone HTML</div>
+  </div>
+  <div class="toolbar">
+    <label class="search"><span>⌕</span><input id="search" type="search" autocomplete="off" placeholder="Cari judul, isi, atau tanggal…" aria-label="Cari di perjalanan"></label>
+    <button class="tool-btn" id="clear" type="button">RESET</button>
+    <button class="tool-btn" id="print" type="button">CETAK</button>
+  </div>
+  <div class="stats"><span><b id="visibleCount">0</b> entri tampil</span><span><b id="totalCount">0</b> entri tercatat</span><span><b id="partCount">0</b> part</span><span>Search: <b>Ctrl / ⌘ + K</b></span></div>
+</header>
+
+<div class="layout">
+  <button class="sidebar-backdrop" id="sidebarBackdrop" type="button" aria-label="Tutup perjalanan index"></button>
+  <aside class="index" id="sidebarIndex" aria-label="Indeks perjalanan">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><h2>Indeks</h2></div>
+    <div class="index-note">Urutan kronologis · history hanya bertambah di akhir · label dasar: fakta sumber, ringkasan, inferensi.</div>
+    <div id="perjalananIndex"></div>
+  </aside>
+
+  <main class="content">
+    <div class="content-head"><h2>Linimasa</h2><small id="filterLabel">Semua entri</small></div>
+    <div class="timeline" id="timeline">
+<!-- PERJALANAN CONTENT START -->
+<section class="part" id="part-1" data-part="1">
+  <div class="part-head"><div><div class="part-no">01</div><div class="part-title">ROMAJI IS BORN</div></div></div>
+  <div class="entry-list">
+    <article class="entry-card" id="e-2026-10-08-romaji" data-date="2026-10-08" data-basis="fact" data-origin="selected-concept" data-approval="user-approved" data-concept-id="romaji-v1">
+      <div class="entry-meta"><time datetime="2026-10-08">2026-10-08</time><span class="basis" data-basis="fact">FACT</span></div>
+      <h3>ROMAJI — Japanese ↔ Romaji, with English &amp; Indonesian meaning</h3>
+      <div class="entry-body"><p>Project lahir dari kebutuhan sederhana: mencari bentuk alfabet Latin dari kata Jepang tanpa harus lebih dulu tahu bahwa istilahnya adalah “romaji”. Arah produk disepakati sebagai EN/ID ↔ Japanese + Romaji, ditambah buku besar dictionary yang diindeks berdasarkan Romaji.</p></div>
+    </article>
+  </div>
+</section>
+    <article class="entry-card" id="e-2026-10-09-ui-reliability" data-date="2026-10-09" data-basis="summary">
+      <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="basis" data-basis="summary">SUMMARY</span></div>
+      <h3>UI Reliability — Theme and Navigation Repair</h3>
+      <div class="entry-body"><p>Setelah pengujian di browser Android menunjukkan light theme yang terlalu pudar dan header navigasi yang menghilang saat berpindah bagian, perbaikan difokuskan pada konsistensi permukaan warna dan perilaku sticky header. Release v0.3.1 mencatat perbaikan tersebut sekaligus menegakkan kembali sinkronisasi dokumentasi dan validasi ZIP final.</p></div>
+    </article>
+    <article class="entry-card" id="e-2026-10-09-translator-auto-detect" data-date="2026-10-09" data-basis="summary">
+      <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="basis" data-basis="summary">SUMMARY</span></div>
+      <h3>Universal Translator Input — Auto-detect and Adaptive Results</h3>
+      <div class="entry-body"><p>Translator KAMUSORA dikembangkan dari tiga mode input manual menjadi satu form yang mencoba mengenali Bahasa Indonesia, English, Romaji, dan input bertulisan Jepang. Banner deteksi terpisah dihilangkan karena contoh input sudah ditampilkan pada placeholder. Hasil tetap memasangkan tulisan Jepang, Romaji, dan arti yang tersedia dari dataset lokal; deteksi bersifat heuristik dan cakupan frasa tetap terbatas.</p></div>
+      <p class="evidence">Evidence: implementasi index.html dan rilis v0.3.2.</p>
+    </article>
+    <article class="entry-card" id="e-2026-10-09-translator-interactions" data-date="2026-10-09" data-basis="summary">
+      <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="basis" data-basis="summary">SUMMARY</span></div>
+      <h3>Translator Interaction Reliability — Adaptive Results and Mobile Submit</h3>
+      <div class="entry-body"><p>Release v0.3.3 memperjelas hasil berdasarkan bentuk input, menyembunyikan panel hasil sebelum pencarian, dan menambahkan saran typo yang dipilih dari dataset lokal. Enter kini mengirim pencarian sementara Shift+Enter mempertahankan baris baru; pada mobile, keyboard ditutup dan panel hasil dibawa ke area pandang. Dataset tidak diperluas pada milestone ini agar perubahan interaksi dapat diuji terpisah.</p></div>
+      <p class="evidence">Evidence: perubahan index.html, tests/test_translator_interactions.py, dan release v0.3.3.</p>
+    </article>
+    <article class="entry-card" id="e-2026-10-09-related-results-dataset" data-date="2026-10-09" data-basis="summary">
+      <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="basis" data-basis="summary">SUMMARY</span></div>
+      <h3>Exact-Match-First Results — Related Phrases and Dataset Expansion</h3>
+      <div class="entry-body"><p>Release v0.3.4 mempertahankan exact match sebagai hasil utama, lalu menampilkan maksimal empat entry terkait yang dideduplikasi berdasarkan grup relasi eksplisit. Setiap kartu terkait menampilkan tulisan Jepang, Romaji lengkap, arti English/Indonesia, dan kontrol salin. Dataset lokal juga diperluas dengan kosakata sehari-hari serta variasi frasa, tanpa API eksternal; bentuk kasual arigatou dipisahkan dari bentuk sopan arigatou gozaimasu.</p></div>
+      <p class="evidence">Evidence: perubahan index.html, tests/test_translator_auto_detect.py, tests/test_translator_interactions.py, dan release v0.3.4.</p>
+    </article>
+    <article class="entry-card" id="e-2026-10-09-release-archive-hygiene" data-date="2026-10-09" data-basis="summary">
+      <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="basis" data-basis="summary">SUMMARY</span></div>
+      <h3>Release Archive Hygiene — Preventing Nested ZIP Bundles</h3>
+      <div class="entry-body"><p>Review setelah pengiriman v0.3.4 menemukan bahwa paket distribusi ikut membawa arsip ZIP rilis lama dan checkpoint backup. Builder kini mengecualikan file ZIP dari payload rilis, sedangkan preflight menolak nested archive agar ukuran paket tetap wajar dan artefak tidak berulang membesar setiap kali dibangun. Versi produk tetap 0.3.4 karena ini koreksi packaging, bukan perubahan fitur.</p></div>
+      <p class="evidence">Evidence: scripts/build_release.py, tests/release_preflight.py, dan tests/test_release_preflight.py.</p>
+    </article>
+    <article class="entry-card" id="e-2026-10-09-universal-related-results" data-date="2026-10-09" data-basis="summary">
+      <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="basis" data-basis="summary">SUMMARY</span></div>
+      <h3>Universal Related Results — Contextual Phrase Discovery</h3>
+      <div class="entry-body"><p>Release v0.3.5 memperluas pilihan frasa terkait agar berlaku lintas input English, Indonesia, dan Romaji. Kata dasar seperti “good” mempertahankan hasil kamus exact match sambil menampilkan opsi frasa yang dapat dipilih; kata kontekstual seperti “selamat” meminta pengguna memilih frasa yang dimaksud daripada memaksakan satu terjemahan. Seluruh opsi bersumber dari dataset lokal, dideduplikasi, dibatasi jumlahnya, dan membuka alur pencarian exact-match yang sama saat dipilih.</p></div>
+      <p class="evidence">Evidence: index.html, tests/test_universal_related_results.py, docs/PLAN-v0.3.5.md, dan release v0.3.5.</p>
+    </article>
+    <article class="entry-card" id="e-2026-10-09-universal-auto-correction" data-date="2026-10-09" data-basis="summary">
+      <div class="entry-meta"><time datetime="2026-10-09">2026-10-09</time><span class="basis" data-basis="summary">SUMMARY</span></div>
+      <h3>Universal Auto-Correction — Hybrid Word, Phrase, and Sentence Repair</h3>
+      <div class="entry-body"><p>Release v0.3.6 menambahkan koreksi lokal hybrid untuk input English, Indonesia, Romaji, dan tulisan Jepang. Input valid tetap diprioritaskan; typo yang cocok kuat dengan dataset atau pola kalimat lokal dapat dikoreksi otomatis dengan indikator asal teks dan opsi undo, sementara kasus ambigu meminta pengguna memilih saran tanpa mengganti teks asli. Fitur tetap offline-first, berbasis dataset/heuristik lokal, dan tidak mengirim teks ke layanan eksternal. Dukungan kalimat dibatasi pada pola lokal dan kandidat yang tersedia, sehingga bukan klaim grammar checker universal.</p></div>
+      <p class="evidence">Evidence: index.html, tests/test_universal_auto_correction.py, docs/PLAN-v0.3.6.md, dan release v0.3.6.</p>
+    </article>
+<!-- PERJALANAN CONTENT END -->
+    </div>
+    <div class="no-results" id="noResults" hidden>Tidak ada entri yang cocok dengan pencarian.</div>
+  </main>
+</div>
+
+<footer class="footer">
+  <div><b>GENESIS / PERJALANAN</b><br>Catatan historis project: append-only, berbasis evidence, tanpa klaim hukum.</div>
+  <div>Local · Standalone HTML · Mobile friendly · Print friendly</div>
+</footer>
+</div>
+<button class="float-top" id="floatTop" type="button" aria-label="Kembali ke atas">↑</button>
+
+<script>
+(() => {
+  'use strict';
+  const search = document.getElementById('search');
+  const totalCount = document.getElementById('totalCount');
+  const visibleCount = document.getElementById('visibleCount');
+  const partCount = document.getElementById('partCount');
+  const noResults = document.getElementById('noResults');
+  const filterLabel = document.getElementById('filterLabel');
+  const perjalananIndex = document.getElementById('perjalananIndex');
+  const parts = [...document.querySelectorAll('#timeline .part')];
+  const cards = [...document.querySelectorAll('#timeline .entry-card')];
+  const haystack = new Map(cards.map(card => [card, card.textContent.toLocaleLowerCase().replace(/\s+/g, ' ') + ' ' + (card.dataset.date || '')]));
+
+  function buildIndex() {
+    perjalananIndex.textContent = '';
+    parts.forEach(part => {
+      const wrap = document.createElement('div');
+      wrap.className = 'toc-part';
+      const head = document.createElement('a');
+      head.className = 'toc-part-title';
+      head.href = '#' + part.id;
+      const no = part.querySelector('.part-no');
+      const title = part.querySelector('.part-title');
+      head.textContent = [no && no.textContent, title && title.textContent].filter(Boolean).join(' · ');
+      wrap.appendChild(head);
+      part.querySelectorAll('.entry-card').forEach(card => {
+        const link = document.createElement('a');
+        link.className = 'toc-link';
+        link.href = '#' + card.id;
+        const d = document.createElement('span');
+        d.className = 'toc-date';
+        d.textContent = card.dataset.date || '';
+        const h = card.querySelector('h3');
+        link.append(d, document.createTextNode(h ? h.textContent : card.id));
+        wrap.appendChild(link);
+      });
+      perjalananIndex.appendChild(wrap);
+    });
+  }
+
+  function render() {
+    const term = search.value.trim().toLocaleLowerCase();
+    let shown = 0;
+    cards.forEach(card => {
+      const ok = !term || haystack.get(card).includes(term);
+      card.hidden = !ok;
+      if (ok) shown++;
+    });
+    parts.forEach(part => { part.hidden = ![...part.querySelectorAll('.entry-card')].some(c => !c.hidden); });
+    noResults.hidden = shown !== 0;
+    totalCount.textContent = cards.length;
+    visibleCount.textContent = shown;
+    partCount.textContent = parts.length;
+    filterLabel.textContent = term ? `“${search.value.trim()}”` : 'Semua entri';
+  }
+  buildIndex();
+  render();
+
+  const themeToggle = document.getElementById('themeToggle');
+    function readTheme(){try{return localStorage.getItem('genesis-perjalanan-theme')}catch(_){return null}}
+  function writeTheme(value){try{localStorage.setItem('genesis-perjalanan-theme',value)}catch(_){} }
+  function themeValue(){const v=readTheme();return v==='dark'||v==='light'?v:'dark';}
+  function resolvedTheme(v){return v==='light'?'light':'dark';}
+  function applyTheme(theme){const resolved=resolvedTheme(theme);document.documentElement.dataset.theme=resolved;const dark=resolved==='dark';themeToggle.textContent=dark?'☀':'☾';themeToggle.setAttribute('aria-pressed',String(dark));themeToggle.title=dark?'Mode: dark':'Mode: light';}
+  applyTheme(themeValue());
+  themeToggle.addEventListener('click',()=>{
+    const current = resolvedTheme(themeValue());
+    const next = current === 'dark' ? 'light' : 'dark';
+    writeTheme(next);
+    applyTheme(next);
+  });
+  addEventListener('storage',e=>{if(e.key==='genesis-perjalanan-theme')applyTheme(themeValue());});
+
+  const layout = document.querySelector('.layout');
+  const sidebarIndex = document.getElementById('sidebarIndex');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+  const mobile = () => matchMedia('(max-width: 900px)').matches;
+  function closeSidebar(){ layout.classList.remove('sidebar-open'); sidebarToggle.setAttribute('aria-pressed','false'); }
+  sidebarToggle.addEventListener('click', () => {
+    if (mobile()) { layout.classList.toggle('sidebar-open'); sidebarToggle.setAttribute('aria-pressed', String(layout.classList.contains('sidebar-open'))); }
+    else { layout.classList.toggle('sidebar-collapsed'); sidebarToggle.setAttribute('aria-pressed', String(layout.classList.contains('sidebar-collapsed'))); }
+  });
+  sidebarBackdrop.addEventListener('click', closeSidebar);
+  sidebarIndex.addEventListener('click', e => { if (mobile() && e.target.closest('a')) closeSidebar(); });
+  document.addEventListener('pointerdown', e => {
+    if (!mobile() || !layout.classList.contains('sidebar-open')) return;
+    const target = e.target;
+    if (!(target instanceof Node)) return;
+    if (!sidebarIndex.contains(target) && target !== sidebarToggle && !sidebarToggle.contains(target)) closeSidebar();
+  }, {passive:true});
+  const floatTop = document.getElementById('floatTop');
+  addEventListener('scroll', () => floatTop.classList.toggle('visible', scrollY > 420), {passive:true});
+  floatTop.addEventListener('click', () => scrollTo({top:0,behavior:'smooth'}));
+
+  search.addEventListener('input', render);
+  document.getElementById('clear').addEventListener('click', () => { search.value = ''; render(); search.focus(); });
+  document.getElementById('print').addEventListener('click', () => window.print());
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); search.focus(); search.select(); }
+    if (e.key === 'Escape') { if (layout.classList.contains('sidebar-open')) closeSidebar(); if (document.activeElement === search) search.blur(); }
+  });
+})();
+</script>
+</body>
+</html>
